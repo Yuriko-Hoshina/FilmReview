@@ -71,6 +71,7 @@ body {
   width: 100px;
   border-color: #DF7861;
   color: #FFF;
+  //text-align: center;
   font-size: 5px;
   font-weight: 700;
   background-color: #ECB390;
@@ -88,6 +89,37 @@ body {
 }
 
 .btn:hover {
+  transform: translateY(3px);
+  text-decoration: none;
+  box-shadow: 0 2px 0 #aaaaaa;
+}
+
+.btn1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 450px;
+  width: 100px;
+  border-color: #DF7861;
+  color: #FFF;
+  //text-align: center;
+  font-size: 5px;
+  font-weight: 700;
+  background-color: #ECB390;
+  box-shadow: 0 5px 0 #aaaaaa;
+  transition: 0.3s;
+}
+
+.btn1::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+  transform: rotate(45deg);
+}
+
+.btn1:hover {
   transform: translateY(3px);
   text-decoration: none;
   box-shadow: 0 2px 0 #aaaaaa;
