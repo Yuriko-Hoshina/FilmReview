@@ -6,7 +6,7 @@ body {
 }
 
 .navbar-laravel {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
   border-color: #DF7861;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
@@ -33,11 +33,11 @@ body {
 
 .login-box {
   border-color: #DF7861;
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
 }
 
 .login-header {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
   color: #fff;
 }
 
@@ -46,13 +46,13 @@ body {
 }
 
 .navbar-sns {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
   border-color: #DF7861;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .footer {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
 }
 
 .copyright {

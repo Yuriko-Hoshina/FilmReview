@@ -15,8 +15,8 @@ class Movie extends Model
         'title' => 'required',
         'director' => 'required',
         'movietime' => 'required',
-        'genre_id' => 'required|numeric|min:1',
-        'country_id' => 'required|numeric|min:1',
+        'genre_id' => 'required',
+        'country_id' => 'required',
         'release' => 'required|date',
         'HP' => 'required',
     );

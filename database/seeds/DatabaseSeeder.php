@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         
-         \DB::table('countries')->insert([
+        /* \DB::table('countries')->insert([
             [
                 'name' => '日本',
                 'created_at' => new DateTime(),
@@ -184,6 +184,67 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'その他',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+        ]); */
+        
+        \DB::table('ages')->insert([
+            [
+                'name' => '10代',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '20代',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '30代',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '40代',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '50代',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '60代',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => 'その他',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+        ]);
+        
+        \DB::table('genders')->insert([
+            [
+                'name' => '男性',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '女性',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => 'その他',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '回答しない',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],

@@ -6,7 +6,7 @@ body {
 }
 
 .navbar-laravel {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
   border-color: #DF7861;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
@@ -33,11 +33,11 @@ body {
 
 .login-box {
   border-color: #DF7861;
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
 }
 
 .login-header {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
   color: #fff;
 }
 
@@ -45,14 +45,16 @@ body {
   background-color: #fff;
 }
 
+
+//footer
 .navbar-sns {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
   border-color: #DF7861;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .footer {
-  background-color: #BCCC9A;
+  background-color: #D4E2D4;
 }
 
 .copyright {
@@ -60,6 +62,7 @@ body {
   text-align: center;
 }
 
+//button
 .btn {
   display: flex;
   justify-content: space-between;
@@ -68,6 +71,7 @@ body {
   width: 100px;
   border-color: #DF7861;
   color: #FFF;
+  //text-align: center;
   font-size: 5px;
   font-weight: 700;
   background-color: #ECB390;
@@ -76,7 +80,7 @@ body {
 }
 
 .btn::after {
-  content: "";
+  content: '';
   width: 5px;
   height: 5px;
   border-top: 3px solid #333333;
@@ -89,4 +93,5 @@ body {
   text-decoration: none;
   box-shadow: 0 2px 0 #aaaaaa;
 }
+
 

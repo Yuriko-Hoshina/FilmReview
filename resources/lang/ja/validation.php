@@ -141,5 +141,6 @@ return [
         'HP' => '公式HP',
         'country_id' => '製作国',
         'genre_id' => '映画のジャンル',
+        
     ],
 ];
