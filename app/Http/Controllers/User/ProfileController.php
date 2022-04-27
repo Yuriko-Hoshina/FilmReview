@@ -47,5 +47,8 @@ class ProfileController extends Controller
         return redirect('user/profile/create');
     }
     
-    
+    public function info(Request $request)
+    {
+        return view('user.profile.info');
+    }
 }

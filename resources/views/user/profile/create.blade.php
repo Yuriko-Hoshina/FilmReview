@@ -85,10 +85,6 @@
                     <div class="form-group row">
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-primary" value="登録">
-                        <div class="col-ml-md-5">
-                                {{ csrf_field() }}
-                                <a href={{ url('/user/profile') }}>一覧へ戻る</a>
-                        </div>
                     </div>
                     
                 </form>

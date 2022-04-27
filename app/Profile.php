@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Gender;
 use App\Age;
 use App\Genre;
+use App\User;
 
 class Profile extends Model
 {
@@ -31,9 +32,19 @@ class Profile extends Model
         return $this->belongsTo('App\Gender');
     }
     
+    public function genre()
+    {
+        return $this->belongsTo('App\Genre');
+    }
+    
+    public function age()
+    {
+        return $this->belongsTo('App\Age');
+    }
+    
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User');
     }
     
 }

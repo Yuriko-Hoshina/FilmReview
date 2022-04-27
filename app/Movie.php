@@ -37,7 +37,7 @@ class Movie extends Model
         //  製作国、ジャンルに関して検索できるように指定
         $country = Country::where('name', 'like', '%' . $q. '%')->first();
         if ($country) {
-            $query = $query->where('county_id', $country->id);
+            $query = $query->where('country_id', $country->id);
         }
         $genre = Genre::where('name', 'like', '%' . $q. '%')->first();
         if ($genre) {

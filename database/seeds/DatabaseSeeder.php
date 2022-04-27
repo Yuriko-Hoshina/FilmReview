@@ -189,7 +189,7 @@ class DatabaseSeeder extends Seeder
             ],
         ]); */
         
-        \DB::table('ages')->insert([
+        /* \DB::table('ages')->insert([
             [
                 'name' => '10代',
                 'created_at' => new DateTime(),
@@ -248,6 +248,6 @@ class DatabaseSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
-        ]);
+        ]); */
     }
 }

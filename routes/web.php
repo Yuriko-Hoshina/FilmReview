@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('movie/create', 'Admin\MovieController@add');
@@ -32,4 +32,45 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::get('profile/create', 'User\ProfileController@add'); 
     Route::post('profile/create', 'User\ProfileController@create');
+    Route::get('profile', 'User\ProfileController@info');
+});
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| 1) User 認証不要
+|--------------------------------------------------------------------------
+*/
+Route::get('/', function () { return redirect('/home'); });
+ 
+/*
+|--------------------------------------------------------------------------
+| 2) User ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth:user'], function() {
+    Route::get('/info', 'HomeController@info')->name('info');
+});
+ 
+/*
+|--------------------------------------------------------------------------
+| 3) Admin 認証不要
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/',         function () { return redirect('/admin/index'); });
+    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login',    'Admin\LoginController@login');
+});
+ 
+/*
+|--------------------------------------------------------------------------
+| 4) Admin ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+    Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
+    Route::get('index',      'Admin\HomeController@index')->name('admin.index');
 });
