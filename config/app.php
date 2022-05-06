@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         
+        /* Socialite */
+        SocialiteProviders\Manager\ServiceProvider::class,
 
     ],
 

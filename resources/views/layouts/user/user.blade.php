@@ -19,12 +19,15 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+        {{-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> --}}
 
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ secure_asset('css/user.css') }}" rel="stylesheet">
+        
+        {{-- <i class="fa-brands fa-twitter fa-fw fa-border"></i> --}}
     </head>
     <body>
         <div id="app">
@@ -68,6 +71,13 @@
                                 </div>
                             </li>
                         @endguest
+                        
+                        @auth
+                            <div>
+                                <img src="{{ Auth::user()->avatar }}" width="48" height="48">
+                            </div>
+                        @endauth
+                        
                         </ul>
                     </div>
                 </div>

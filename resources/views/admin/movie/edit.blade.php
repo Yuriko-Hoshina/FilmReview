@@ -69,7 +69,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">公式HP</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="HP">{{ $movie->HP }}</textarea>
+                            <input type="text" class="form-control" name="HP" value="{{ $movie->HP }}">
                         </div>
                     </div>
                     

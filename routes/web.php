@@ -19,24 +19,6 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-    Route::get('movie/create', 'Admin\MovieController@add');
-    Route::post('movie/create', 'Admin\MovieController@create');
-    Route::get('movie', 'Admin\MovieController@info');
-    Route::get('movie', 'Admin\MovieController@search');
-    Route::get('movie/edit', 'Admin\MovieController@edit');
-    Route::post('movie/edit', 'Admin\MovieController@update');
-    Route::get('movie/delete', 'Admin\MovieController@delete');
-});
-
-Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
-    Route::get('profile/create', 'User\ProfileController@add'); 
-    Route::post('profile/create', 'User\ProfileController@create');
-    Route::get('profile', 'User\ProfileController@info');
-});
-
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -60,9 +42,9 @@ Route::group(['middleware' => 'auth:user'], function() {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/',         function () { return redirect('/admin/index'); });
-    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
-    Route::post('login',    'Admin\LoginController@login');
+    Route::get('/', function () { return redirect('/admin/index'); });
+    Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login', 'Admin\LoginController@login');
 });
  
 /*
@@ -71,6 +53,35 @@ Route::group(['prefix' => 'admin'], function() {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
-    Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
-    Route::get('index',      'Admin\HomeController@index')->name('admin.index');
+    Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
+    Route::get('index', 'Admin\HomeController@index')->name('admin.index');
+});
+
+
+
+/* 自作Routing */
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+    Route::get('movie/create', 'Admin\MovieController@add');
+    Route::post('movie/create', 'Admin\MovieController@create');
+    Route::get('movie', 'Admin\MovieController@info');
+    Route::get('movie', 'Admin\MovieController@search');
+    Route::get('movie/edit', 'Admin\MovieController@edit');
+    Route::post('movie/edit', 'Admin\MovieController@update');
+    Route::get('movie/delete', 'Admin\MovieController@delete');
+});
+
+Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
+    Route::get('profile/create', 'User\ProfileController@add'); 
+    Route::post('profile/create', 'User\ProfileController@create');
+    Route::get('profile', 'User\ProfileController@info');
+    Route::get('profile/edit', 'User\ProfileController@edit');
+    Route::post('profile/edit', 'User\ProfileController@update');
+});
+
+
+
+/* Socialite */
+Route::prefix('auth')->group(function () {
+    Route::get('twitter', 'AuthController@login');
+    Route::get('twitter/callback', 'AuthController@callback');
 });
