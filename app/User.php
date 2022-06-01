@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Profile;
+use App\SocialUser;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'unique_id', 'avatar', 'bio'
     ];
 
     /**
@@ -43,9 +44,25 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
     
-    
     public function socialUsers()
     {
         return $this->hasMany(SocialUser::class);
+    }
+    
+    public function recommendations()
+    {
+        return $this->hasMany('App\Recommendation');
+    }
+    
+    public function getAvatar()
+    {
+        $path = "no_image_square.jpg";
+        if($this->avatar != null){
+            $path = $this->avatar;
+        }elseif($this->profile && $this->profile->image_path != null){
+            $path = $this->profile->image_path;
+        }
+        
+        return $path;
     }
 }

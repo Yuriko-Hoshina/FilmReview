@@ -1,4 +1,4 @@
-@extends('layouts.admin.admin')
+@extends('layouts.user.login')
 
 @section('content')
 <div class="container">
@@ -50,21 +50,16 @@
                         </div>
                         
                         
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('messages.Login') }}
+                        <div class="form-group row form-inline">
+                            
+                            <div class="col-md-6">
+                                <button type="submit" class="btn-twitter">
+                                    <a href="/auth/twitter">Twitterでログイン</a>
                                 </button>
                             </div>
                             
-                            {{-- Socialite 
-                            <button type="submit" class="twitter-btn" color=#00aced>
-                                <a href="/auth/twitter"><i class="fab fa-twitter"></i>Twitterでログイン</a>
-                            </button> --}}
-                            <div>
-                                <button type="submit" class="twitter">
-                                    <a href="/auth/twitter">Twitterでログイン</a>
-                                </button>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">{{ __('messages.Login') }}</button>
                             </div>
                             
                         </div>

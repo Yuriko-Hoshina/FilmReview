@@ -4,21 +4,21 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <h2>映画作品一覧</h2>
-        </div>
-        <div class="group row">
-            <div class="col-md-6">
+        <div class="group row col-md-12 row-inline">
+            <div class="col-md-3">
+                <h2>映画作品一覧</h2>
+            </div>
+            <div class="col-md-5">
                 <a href="{{ action('Admin\MovieController@add') }}" role="button" class="btn btn-primary">新規登録</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <form action="{{ action('Admin\MovieController@search') }}" method="get">
-                    <div class="form-group row">
+                    <div class="form-group row form-inline">
                         <label>検索</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="q" value="{{ $q }}">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="q" placeholder="映画を検索" value="{{ $q }}">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="検索">
                         </div>
@@ -69,5 +69,6 @@
                 </div>
             </div>
         </div>
+        {{ $movies->links() }}
     </div>
 @endsection

@@ -17,4 +17,10 @@ class Genre extends Model
     {
         return $this->hasMany('App\Genre');
     }
+    
+    public static function getName($tmdb_id)
+    {
+        $data = self::where('tmdb_id', $tmdb_id)->first();
+        return $data->name;
+    }
 }

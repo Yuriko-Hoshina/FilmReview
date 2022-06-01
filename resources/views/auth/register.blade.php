@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user.login')
 
 @section('content')
 <div class="container">
@@ -69,9 +69,11 @@
                             </div>
                             
                             {{-- Socialite --}}
-                            <button type="submit" class="btn twitter-btn">
-                                 <a href="/auth/twitter"><i class="fab fa-twitter"></i>Twitterで登録</a>
-                            </button>
+                            <div>
+                                <button type="submit" class="twitter">
+                                     <a href="/auth/twitter">Twitterで登録</a>
+                                </button>
+                            </div>
                             
                         </div>
                     </form>

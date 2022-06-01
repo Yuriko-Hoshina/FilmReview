@@ -51,4 +51,9 @@ class Movie extends Model
           
         return $query->get();
     }
+    
+    public function recommendations()
+    {
+        return $this->hasMany('App\Recommendation');
+    }
 }

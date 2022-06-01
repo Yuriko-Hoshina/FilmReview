@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         
-        /* \DB::table('countries')->insert([
+        /*\DB::table('countries')->insert([
             [
                 'name' => '日本',
                 'created_at' => new DateTime(),
@@ -76,67 +76,122 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
         
-        \DB::table('genres')->insert([
+        DB::table('genres')->insert([
             [
+                'tmdb_id' => 28,
                 'name' => 'アクション',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'ヒューマンドラマ',
+                'tmdb_id' => 18,
+                'name' => 'ドラマ',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
+                'tmdb_id' => 878,
                 'name' => 'SF',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
+                'tmdb_id' => 14,
                 'name' => 'ファンタジー',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
+                'tmdb_id' => 12,
                 'name' => 'アドベンチャー',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'サスペンス/ミステリー',
+                'tmdb_id' => 80,
+                'name' => 'サスペンス',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
+                'tmdb_id' => 9648,
+                'name' => 'ミステリー',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'tmdb_id' => 27,
                 'name' => 'ホラー',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'パニック',
+                'tmdb_id' => 53,
+                'name' => 'スリラー',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => '恋愛',
+                'tmdb_id' => 10749,
+                'name' => 'ロマンス',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => '青春',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
+                'tmdb_id' => 16,
                 'name' => 'アニメ',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
             [
+                'tmdb_id' => 10751,
                 'name' => 'ファミリー',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
+            [
+                'tmdb_id' => 35,
+                'name' => 'コメディ',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'tmdb_id' => 99,
+                'name' => 'ドキュメンタリー',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'tmdb_id' => 10752,
+                'name' => '戦争',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'tmdb_id' => 36,
+                'name' => '史劇',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'tmdb_id' => 37,
+                'name' => '西部劇',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'tmdb_id' => 10402,
+                'name' => '音楽',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'tmdb_id' => 10770,
+                'name' => 'テレビ映画',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            /*
             [
                 'name' => 'キッズ',
                 'created_at' => new DateTime(),
@@ -148,27 +203,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             [
-                'name' => 'コメディ',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
-                'name' => 'ドキュメンタリー',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
-                'name' => '戦争',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
-                'name' => '史劇',
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
-                'name' => '西部劇',
+                'name' => '青春',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
@@ -187,9 +222,9 @@ class DatabaseSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
-        ]); */
+        ]);*/
         
-        /* \DB::table('ages')->insert([
+        /*\DB::table('ages')->insert([
             [
                 'name' => '10代',
                 'created_at' => new DateTime(),
@@ -248,6 +283,6 @@ class DatabaseSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
-        ]); */
+        ]);*/
     }
 }

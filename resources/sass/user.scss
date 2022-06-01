@@ -7,32 +7,32 @@ body {
 
 .navbar-laravel {
   background-color: #D4E2D4;
-  border-color: #DF7861;
+  //border-color: #DF7861;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .navbar-brand {
   color: #fff !important;
-  border-color: #DF7861;
+  //border-color: #DF7861;
 }
 
 .nav-link {
   color: #fff !important;
-  border-color: #DF7861;
+  //border-color: #DF7861;
 }
 
 .table-dark {
   color: #fff;
-  border-color: #DF7861;
+  //border-color: #DF7861;
 }
 
 .list-group-item {
-  border-color: #DF7861;
-  background-color: #000;
+  //border-color: #DF7861;
+  background-color: #FFF;
 }
 
 .login-box {
-  border-color: #DF7861;
+  //border-color: #DF7861;
   background-color: #D4E2D4;
 }
 
@@ -49,12 +49,13 @@ body {
 //footer
 .navbar-sns {
   background-color: #D4E2D4;
-  border-color: #DF7861;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  //border-color: #DF7861;
 }
 
 .footer {
   background-color: #D4E2D4;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .copyright {
@@ -67,11 +68,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 450px;
+  //margin-left: 450px;
   width: 100px;
   border-color: #DF7861;
   color: #FFF;
-  //text-align: center;
+  text-align: center;
   font-size: 5px;
   font-weight: 700;
   background-color: #ECB390;
@@ -94,9 +95,56 @@ body {
   box-shadow: 0 2px 0 #aaaaaa;
 }
 
-/* .icon::before {
-　　content:'f35a';
-　　font-family:'Font Awesome 5 Free'
-　　font-weight:900;
-　　color:#55acee;
-} */
+//twitterアイコン
+.twitter:before {
+  color: #87CEFA;
+  font-family: "Font Awesome 5 Brands";
+  content: "\f081";
+  font-weight: 400;
+}
+
+//twitterでログイン
+.btn-twitter {
+  color: #66CCFF;
+  border-color: #66CCFF;
+  text-align: center;
+  font-size: 5px;
+  background-color: #FFF;
+}
+
+.ranking {
+  display: flex;
+  flex-flow: column;
+}
+
+.us-ranking {
+  background-color: #FFF;
+  margin-bottom: 20px;
+}
+
+.ja-ranking {
+  background-color: #FFF;
+}
+
+.sub {
+  width: 100%;
+  height: 50px;
+  background-color: #99CC99;
+  padding-top: 5px;
+  box-sizing: border-box;
+}
+
+.sub > ul {
+  display: flex;
+}
+
+.sub > ul > li {
+  list-style: none;
+}
+
+.sub > ul > li > a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  margin-right: 35px;
+}

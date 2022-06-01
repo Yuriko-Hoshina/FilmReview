@@ -19,7 +19,6 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
@@ -30,7 +29,7 @@
     <body>
         <div id="app">
             {{-- 画面上部に表示するナビゲーションバーです。 --}}
-            <nav class="navbar navbar-expand-md navbar-dark navbar-laravel"> {{-- fixed-topつけたいけどタイトル消えちゃう --}}
+            <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -69,61 +68,23 @@
                                 </div>
                             </li>
                         @endguest
-                        
-                        @auth
-                            <div>
-                                @if(Auth::user()->unique_id != null)
-                                <img src="{{ Auth::user()->getAvatar() }}" width="48" height="48">
-                                @else
-                                <img src="{{ asset('storage/image/' . Auth::user()->getAvatar()) }}" width="48" height="48">
-                                @endif
-                                
-                            </div>
-                        @endauth
-                        
                         </ul>
                     </div>
                 </div>
             </nav>
-            <nav class="sub">
-                <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">マイページ</a></li>
-                    <li><a href="#">映画検索</a></li>
-                </ul>
-            </nav>
             {{-- ここまでナビゲーションバー --}}
 
-            <main class="p-4" style="display:flex;">
-                <div class="col-md-8 m-4">
-                {{-- コンテンツをここに入れるため、@yieldで空けておきます --}}
+            <main class="py-4">
+                {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')
-                </div>
-                
-                <div class="form-group m-4 col-md-3 ranking">
-                    
-                    <div class="border us-ranking">
-                        <h4>興行収入ランキング(アメリカ)</h4>
-                        <h6>第１位　アバター</h6>
-                    </div>
-                    
-                    
-                    <div class="border ja-ranking">
-                        <h4>興行収入ランキング(日本)</h4>
-                        <h6>第１位　劇場版　鬼滅の刃無限列車編</h6>
-                    </div>
-                
-                </div>
-                
             </main>
-            
         </div>
     </body>
     
     <footer>
         <nav class="navbar navbar-expand-md navbar-sns">
             <div class="footer">
-                <p class="copyright"><i class="fab fa-twitter-square fa-2x fa-fw twiiter"></i>(C) 2022 MovieReview.</p>
+                <p class="copyright">(C) 2022 MovieReview.</p>
             </div>
         </nav>
     </footer>

@@ -33,7 +33,9 @@ class MovieController extends Controller
     
     public function info(Request $request)
     {
-        return view('admin.movie.info');
+        $movies = DB::table('movies')->paginate(20);
+        
+        return view('admin.movie.info', ['movies' => $movies]);
     }
     
     public function search(Request $request)

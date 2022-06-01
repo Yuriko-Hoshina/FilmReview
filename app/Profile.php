@@ -22,10 +22,10 @@ class Profile extends Model
         'introduction' => 'required',
     );
     
-    /*public function pro_histories()
+    public function profile_histories()
     {
-        return $this->hasMany('App\ProHistory')->latest('edited_at')->limit(5);
-    }*/
+        return $this->hasMany('App\ProfileHistory')->latest('edited_at')->limit(5);
+    }
     
     public function gender()
     {

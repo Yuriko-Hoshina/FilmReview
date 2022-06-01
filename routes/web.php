@@ -11,13 +11,15 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 /*
@@ -25,8 +27,9 @@ Auth::routes();
 | 1) User 認証不要
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () { return redirect('/home'); });
- 
+//Route::get('/', function () { return redirect('/home'); });
+Route::get('/', 'PageController@info');
+
 /*
 |--------------------------------------------------------------------------
 | 2) User ログイン後
@@ -60,6 +63,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
 
 
 /* 自作Routing */
+ 
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('movie/create', 'Admin\MovieController@add');
     Route::post('movie/create', 'Admin\MovieController@create');
@@ -76,7 +81,13 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     Route::get('profile', 'User\ProfileController@info');
     Route::get('profile/edit', 'User\ProfileController@edit');
     Route::post('profile/edit', 'User\ProfileController@update');
+    Route::get('profile/delete', 'User\ProfileController@delete');
+    Route::get('recommend', 'User\RecommendController@info');
 });
+
+
+
+//Route::get('/home', 'PageController@home');
 
 
 

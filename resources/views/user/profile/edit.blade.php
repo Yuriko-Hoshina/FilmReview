@@ -17,11 +17,20 @@
                     @endif
                     
                     <div class="form-group row">
-                        <label class="col-md-2">アイコン</label>
+                        <label class="col-md-2" for="image">アイコン</label>
                         <div class="col-md-10">
                             <input type="file" class="form-control-file" name="image">
+                            <div class="form-text text-info">
+                                設定中: <img src="{{ asset('storage/image/' . $profile->image_path) }}" width="100px">
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除
+                                </label>
+                            </div>
                         </div>
                     </div>
+                    
                     <div class="form-group row">
                         <label class="col-md-2">ユーザーネーム</label>
                         <div class="col-md-10">
@@ -83,11 +92,28 @@
                     </div>
                     
                     <div class="form-group row">
-                        {{ csrf_field() }}
-                        <input type="submit" class="btn btn-primary" value="登録">
+                        <div class="col-md-10">
+                            <input type="hidden" name="id" value="{{ $profile->id }}">
+                            {{ csrf_field() }}
+                            <input type="submit" class="btn btn-primary" value="更新">
+                        </div>
                     </div>
                     
                 </form>
+                
+                <div class="row mt-5">
+                    <div class="col-md-8 mx-auto">
+                        <h2>編集履歴</h2>
+                        <ul class="list-group">
+                            @if ($profile->profile_histories != NULL)
+                                @foreach ($profile->profile_histories as $profile_history)
+                                    <li class="list-group-item">{{ $profile_history->edited_at }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>

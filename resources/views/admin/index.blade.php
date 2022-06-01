@@ -9,7 +9,7 @@
         </div>
         <div class="group row">
             <div class="col-md-6">
-                <div class="row">commentsテーブルからレコードを取得</div>
+                <div class="row">usersテーブルからレコードを取得等々</div>
             </div>
         </div>
     </div>

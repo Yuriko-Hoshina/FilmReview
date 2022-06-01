@@ -15,9 +15,9 @@ class AddSocialColumnsToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('unique_id')->after('id');
-            $table->string('avatar')->after('password');
-            $table->text('bio')->after('avatar');
+            $table->string('unique_id')->nullable()->after('id');
+            $table->string('avatar')->nullable()->after('password');
+            $table->text('bio')->nullable()->after('avatar');
             $table->string('email')->nullable()->change();
             $table->string('password')->nullable()->change();
         });
