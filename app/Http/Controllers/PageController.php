@@ -10,7 +10,7 @@ class PageController extends Controller
     // home,search,mypageに飛ぶ
     public function info()
     {
-        
+        $tmdbapikey = config('app.tmdbapikey');
         $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=".$tmdbapikey."&language=ja-JA&page=1";
         $method = "GET";
 
@@ -22,7 +22,7 @@ class PageController extends Controller
         $posts = $response->getBody();
         $posts = json_decode($posts, true);
         
-        
+        $tmdbapikey = config('app.tmdbapikey');
         $url = "https://api.themoviedb.org/3/genre/movie/list?api_key=".$tmdbapikey."&language=ja-JA";
         $response = $client->request($method, $url);
 
