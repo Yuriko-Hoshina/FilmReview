@@ -10,7 +10,8 @@ class PageController extends Controller
     // home,search,mypageに飛ぶ
     public function info()
     {
-        $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=177006190d9a268db9fb1945153eb826&language=ja-JA&page=1";
+        
+        $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=".$tmdbapikey."&language=ja-JA&page=1";
         $method = "GET";
 
         //接続
@@ -21,7 +22,8 @@ class PageController extends Controller
         $posts = $response->getBody();
         $posts = json_decode($posts, true);
         
-        $url = "https://api.themoviedb.org/3/genre/movie/list?api_key=177006190d9a268db9fb1945153eb826&language=ja-JA";
+        
+        $url = "https://api.themoviedb.org/3/genre/movie/list?api_key=".$tmdbapikey."&language=ja-JA";
         $response = $client->request($method, $url);
 
         $genres = $response->getBody();
