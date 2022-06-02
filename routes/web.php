@@ -36,7 +36,8 @@ Route::get('/', 'PageController@info');
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'auth:user'], function() {
-    Route::get('/info', 'HomeController@info')->name('info');
+    //Route::get('/info', 'HomeController@info')->name('info');
+    Route::get('/home', 'PageController@info');
 });
  
 /*

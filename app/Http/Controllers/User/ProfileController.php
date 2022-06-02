@@ -11,7 +11,6 @@ use App\Gender;
 use App\User;
 use Carbon\Carbon;
 use Auth;
-use App\ProfileHistory;
 
 class ProfileController extends Controller
 {
@@ -27,6 +26,8 @@ class ProfileController extends Controller
     
     public function create(Request $request)
     {
+        
+        
         $this->validate($request, Profile::$rules);
         
         $profile = new Profile;
@@ -51,28 +52,25 @@ class ProfileController extends Controller
     
     public function info(Request $request)
     {
-        return view('user.profile.info');
+        $posts = Profile::all();
+        
+        return view('user.profile.info', compact(['posts']));
     }
     
     public function edit(Request $request)
     {
-        $profile = Auth::user()->profile;
+        $profile = Profile::find($request->id);
         if(empty($profile)){
             abort(404);
         }
         
-        $genders = Gender::all();
-        $genres = Genre::all();
-        $ages = Age::all();
-        
-        return view('user.profile.edit', compact(['profile', 'genders', 'genres', 'ages']));
+        return view('user.profile.info', compact(['profile']));
     }
     
     public function update(Request $request)
     {
         $this->validate($request, Profile::$rules);
-        $profile = Profile::find($request->id);
-        
+        $profile->Profile::find($request->id);
         $profile_form = $request->all();
         
         if($request->remove == 'true'){
@@ -90,19 +88,6 @@ class ProfileController extends Controller
         
         $profile->fill($profile_form)->save();
         
-        $profile_history = new ProfileHistory();
-        $profile_history->profile_id = $profile->id;
-        $profile_history->edited_at = Carbon::now();
-        $profile_history->save();
-        
-        return redirect('user/profile');
-    }
-    
-    public function delete(Request $request)
-    {
-        $profile = Profile::find($request->id);
-        $profile->delete();
-        
-        return redirect('user/profile');
+        return redirect('user/profile', compact(['profile']));
     }
 }

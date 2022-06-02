@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Country;
@@ -33,7 +34,7 @@ class MovieController extends Controller
     
     public function info(Request $request)
     {
-        $movies = DB::table('movies')->paginate(20);
+        $movies = Movie::paginate(20);
         
         return view('admin.movie.info', ['movies' => $movies]);
     }
