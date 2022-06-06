@@ -34,9 +34,10 @@ class MovieController extends Controller
     
     public function info(Request $request)
     {
-        $movies = Movie::paginate(20);
+        //作品詳細画面作ったら以下コメントアウト外す
+        //$movies = Movie::paginate(20);
         
-        return view('admin.movie.info', ['movies' => $movies]);
+        return view('admin.movie.info'/*, ['movies'=>$movies]*/);
     }
     
     public function search(Request $request)

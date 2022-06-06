@@ -71,14 +71,13 @@
                         @endguest
                         
                         @auth
-                            <div>
-                                @if(Auth::user()->unique_id != null)
-                                <img src="{{ Auth::user()->getAvatar() }}" width="48" height="48">
-                                @else
-                                <img src="{{ asset('storage/image/' . Auth::user()->getAvatar()) }}" width="48" height="48">
-                                @endif
-                                
-                            </div>
+                        <div>
+                            @if(Auth::user()->unique_id != null)
+                            <img src="{{ Auth::user()->getAvatar() }}" width="48" height="48">
+                            @else
+                            <img src="{{ asset('storage/image/' . Auth::user()->getAvatar()) }}" width="48" height="48">
+                            @endif
+                        </div>
                         @endauth
                         
                         </ul>
@@ -95,7 +94,7 @@
             {{-- ここまでナビゲーションバー --}}
 
             <main class="p-4" style="display:flex;">
-                <div class="col-md-8 m-4">
+                <div class="col-md-8">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます --}}
                 @yield('content')
                 </div>

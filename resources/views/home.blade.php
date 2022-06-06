@@ -25,12 +25,13 @@
             --}}
             
             
-            <div class="col-md-10">
+            <div {{--class="col-md-10"--}}>
                 <table class="table table-striped table-dark mt-5">
                     <tr>
-                        <th>タイトル</th>
-                        <th>公開予定日</th>
-                        <th>ジャンル</th>
+                        <th width=20%>タイトル</th>
+                        <th width=20%>公開予定日</th>
+                        <th width=30%>ジャンル</th>
+                        <th width=30%>ポスター</th>
                     </tr>
                     @foreach($posts['results'] as $tmdb)
                     <tr>

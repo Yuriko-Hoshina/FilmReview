@@ -1,13 +1,13 @@
-@extends('layouts.user.user')
+@extends('layouts.admin.admin')
 
-@section('title', 'マイプロフィール編集')
+@section('title', 'ユーザー編集')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>マイプロフィール編集</h2>
-                <form action="{{ action('User\ProfileController@edit') }}" method="post" enctype="multipart/form-data">
+                <h2>ユーザー編集</h2>
+                <form action="{{ action('Admin\UserController@edit') }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)

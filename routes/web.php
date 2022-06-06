@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 */
 //Route::get('/', function () { return redirect('/home'); });
 Route::get('/', 'PageController@info');
+Route::get('/movie', 'MovieController@info');
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('movie/edit', 'Admin\MovieController@edit');
     Route::post('movie/edit', 'Admin\MovieController@update');
     Route::get('movie/delete', 'Admin\MovieController@delete');
+    Route::get('user', 'Admin\UserController@info');
 });
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
