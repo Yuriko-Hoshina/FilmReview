@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-         <div class="group row col-md-12 row-inline">
+        <div class="group row col-md-12 row-inline">
             <div class="col-md-3">
                 <h2>映画作品一覧</h2>
             </div>

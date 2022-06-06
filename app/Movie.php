@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Country;
 use App\Genre;
+use App\Recommendation;
 
 class Movie extends Model
 {

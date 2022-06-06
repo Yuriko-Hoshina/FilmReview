@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Movie;
+use App\Country;
+use App\Genre;
 
 class PageController extends Controller
 {
     // home,search,mypageに飛ぶ
-    public function info()
+    public function info(Request $request)
     {
         $tmdbapikey = config('app.tmdbapikey');
         $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=".$tmdbapikey."&language=ja-JA&page=1";
@@ -42,9 +45,36 @@ class PageController extends Controller
     }*/
     
     
-    public function search()
+    public function search(Request $request)
     {
-        return view();
+        
+        $tmdbapikey = config('app.tmdbapikey');
+        $search = $request;
+        $url = "https://api.themoviedb.org/3/search/movie?api_key=".$tmdbapikey."&language=ja-JA&query=".$search."&page=1&include_adult=false";
+        $method = "GET";
+       
+        
+        $client = new Client();
+
+        $response = $client->request($method, $url);
+
+        $queries = $response->getBody();
+        $queries = json_decode($queries, true);
+        //dd($queries);
+        
+        /*
+        $q = $request->q;
+        
+        if($q !=''){
+            $posts = Movie::searchByKeyword($q);
+        }else{
+            $posts = Movie::all();
+        }
+        */
+        
+        return view('search', compact(['queries', 'search']));
+        
+        //return view('search', compact(['posts', 'q']));
     }
     
     public function mypage()

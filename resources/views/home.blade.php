@@ -1,5 +1,6 @@
-
 @extends('layouts.user.user')
+
+@section('title', 'HOME')
 
 @section('content')
 <div class="container">

@@ -35,15 +35,15 @@
                     <table class="table table-light">
                         <thead class="table table-light">
                             <tr>
-                                <th width="5%">ID</th>
+                                <th width="5%">UserID</th>
                                 <th width="10%">メールアドレス</th>
                                 <th width="5%">アプリネーム</th>
-                                <th width="5%">プロフィールID</th>
+                                <th width="5%">ProfileID</th>
                                 <th width="10%">ユーザーネーム</th>
                                 <th width="10%">性別</th>
                                 <th width="10%">年代</th>
                                 <th width="10%">好きなジャンル</th>
-                                <th width="15%">マイベストムービー</th>
+                                <th width="15%">MyBestMovie</th>
                                 <th width="10%">自己紹介</th>
                                 <th width="5%">操作</th>
                             </tr>
@@ -61,13 +61,13 @@
                                     <td>{{ \Str::limit($user->profile->genre->name??'', 100) }}</td>
                                     <td>{{ \Str::limit($user->profile->best_movie??'', 100) }}</td>
                                     <td>{{ \Str::limit($user->profile->introduction??'', 100) }}</td>
-                                    
+                                    {{--
                                     <td>    
                                         <div>
                                             <a href="{{ action('Admin\UserController@delete', ['id' => $user->id]) }}">削除</a>
                                         </div>
                                     </td>
-                                    
+                                    --}}
                                 </tr>
                             @endforeach
                         </tbody>

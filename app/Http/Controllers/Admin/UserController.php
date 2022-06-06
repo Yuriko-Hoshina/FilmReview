@@ -48,12 +48,12 @@ class UserController extends Controller
         return redirect('admin/user');
     }
     */
-    
+    /*
     public function delete(Request $request)
     {
         $user = User::find($request->id);
         $user->delete();
         return redirect('admin/user');
     }
-    
+    */
 }
