@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Country;
 use App\Genre;
 use App\Recommendation;
+use GuzzleHttp\Client;
 
 class Movie extends Model
 {

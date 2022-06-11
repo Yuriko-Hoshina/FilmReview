@@ -14,7 +14,7 @@ class PageController extends Controller
     public function info(Request $request)
     {
         $tmdbapikey = config('app.tmdbapikey');
-        $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=".$tmdbapikey."&language=ja-JA&page=1";
+        $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=".$tmdbapikey."&language=ja-JA";
         $method = "GET";
 
         //接続
@@ -31,38 +31,45 @@ class PageController extends Controller
 
         $genres = $response->getBody();
         $genres = json_decode($genres, true);
-        //dd($genres);
+        //dd($posts);
         
-
         return view('home', ['posts' => $posts]);
     }
     
-    
-    /*
-    public function home()
-    {
-        return view('home');
-    }*/
-    
-    
     public function search(Request $request)
     {
+        $search = $request->search;
         
+        if($search != ''){
+        //もし検索内容に入力があればsearchを取得して表示
         $tmdbapikey = config('app.tmdbapikey');
-        $search = $request;
-        $url = "https://api.themoviedb.org/3/search/movie?api_key=".$tmdbapikey."&language=ja-JA&query=".$search."&page=1&include_adult=false";
+        $url = "https://api.themoviedb.org/3/search/movie?api_key=".$tmdbapikey."&language=ja-JA&query=".$search."&include_adult=false";
         $method = "GET";
-       
         
         $client = new Client();
 
         $response = $client->request($method, $url);
 
-        $queries = $response->getBody();
-        $queries = json_decode($queries, true);
-        //dd($queries);
+        $posts = $response->getBody();
+        $posts = json_decode($posts, true);
         
-        /*
+        }else{
+        //検索内容に何もなければpopularで取得して表示
+        $tmdbapikey = config('app.tmdbapikey');
+        $url = "https://api.themoviedb.org/3/movie/popular?api_key=".$tmdbapikey."&language=ja-JA";
+        $method = "GET";
+
+        $client = new Client();
+
+        $response = $client->request($method, $url);
+
+        $posts = $response->getBody();
+        $posts = json_decode($posts, true);
+        }
+        
+        return view('search', compact(['search', 'posts']));
+        
+        /*以下はadminのmovieと同じもの
         $q = $request->q;
         
         if($q !=''){
@@ -71,9 +78,6 @@ class PageController extends Controller
             $posts = Movie::all();
         }
         */
-        
-        return view('search', compact(['queries', 'search']));
-        
         //return view('search', compact(['posts', 'q']));
     }
     

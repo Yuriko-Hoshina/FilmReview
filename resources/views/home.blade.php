@@ -5,7 +5,36 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="group row col-md-12 row-inline">
+            <div class="col-md-3">
+                <h2>UpComing??</h2>
+            </div>
+            
+            <div class="col-md-10">
+                <table class="table table-striped table-light mt-5">
+                    <tr>
+                        <th width=20%>タイトル</th>
+                        <th width=20%>公開予定日</th>
+                        <th width=30%>ジャンル</th>
+                        <th width=10%>ポスター</th>
+                        <th width=20%>詳細リンク</th>
+                    </tr>
+                    @foreach($posts['results'] as $tmdb)
+                    <tr>
+                        <td>{{ $tmdb['title'] }}</td>
+                        <td>{{ $tmdb['release_date'] }}</td>
+                        <td>
+                        @foreach($tmdb['genre_ids'] as $genre)
+                            {{ App\Genre::getName($genre) }}
+                        @endforeach
+                        </td>
+                        <td><img src="{{ 'https://image.tmdb.org/t/p/w185' . $tmdb['poster_path'] }}"></td>
+                        <td>{{ $tmdb['id'] }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+            
             
             {{--
             <div class="card">
@@ -24,30 +53,6 @@
                 </div>
             </div>
             --}}
-            
-            
-            <div {{--class="col-md-10"--}}>
-                <table class="table table-striped table-dark mt-5">
-                    <tr>
-                        <th width=20%>タイトル</th>
-                        <th width=20%>公開予定日</th>
-                        <th width=30%>ジャンル</th>
-                        <th width=30%>ポスター</th>
-                    </tr>
-                    @foreach($posts['results'] as $tmdb)
-                    <tr>
-                        <td>{{ $tmdb['title'] }}</td>
-                        <td>{{ $tmdb['release_date'] }}</td>
-                        <td>
-                        @foreach($tmdb['genre_ids'] as $genre)
-                            {{ App\Genre::getName($genre) }}
-                        @endforeach
-                        </td>
-                        <td><img src="{{ 'https://image.tmdb.org/t/p/w185' . $tmdb['poster_path'] }}"></td>
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
             
             
         </div>

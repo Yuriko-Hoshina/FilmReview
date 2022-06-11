@@ -12,11 +12,10 @@
                 <div class="col-md-4">
                     <form action="{{ action('PageController@search') }}" method="get">
                         <div class="form-group row form-inline">
-                            <label>検索</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" name="queries" placeholder="映画を検索" value="{{ $search }}">
+                            <div class="col-md-8 mr-4">
+                                <input type="text" class="form-control" name="search" placeholder="映画を検索" value="{{ $search }}">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 ml-2">
                                 {{ csrf_field() }}
                                 <input type="submit" class="btn btn-primary" value="検索">
                             </div>
@@ -24,14 +23,15 @@
                     </form>
                 </div>
                 
-                {{-- HOME画面のやつ
+                
                 <div class="col-md-10">
                     <table class="table table-striped table-dark mt-5">
                         <tr>
                             <th width=20%>タイトル</th>
-                            <th width=20%>公開予定日</th>
-                            <th width=30%>ジャンル</th>
-                            <th width=30%>ポスター</th>
+                            <th width=20%>公開日</th>
+                            <th width=20%>ジャンル</th>
+                            <th width=10%>ポスター</th>
+                            <th width=20%>詳細リンク</th>
                         </tr>
                         @foreach($posts['results'] as $tmdb)
                         <tr>
@@ -43,11 +43,12 @@
                             @endforeach
                             </td>
                             <td><img src="{{ 'https://image.tmdb.org/t/p/w185' . $tmdb['poster_path'] }}"></td>
+                            <td>{{ $tmdb['id'] }}</td>
                         </tr>
                         @endforeach
                     </table>
                 </div>
-                --}}
+                
                 
                 {{-- adminの映画一覧
                 <div class="row">
