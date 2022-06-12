@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Profile;
 use App\SocialUser;
+use App\Comment;
 
 class User extends Authenticatable
 {
@@ -64,5 +65,10 @@ class User extends Authenticatable
         }
         
         return $path;
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

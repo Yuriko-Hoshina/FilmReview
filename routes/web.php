@@ -29,7 +29,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 */
 //Route::get('/', function () { return redirect('/home'); });
 Route::get('/', 'PageController@info');
-Route::get('search', 'PageController@search');
+Route::get('movie/search', 'PageController@search');
+Route::get('movie/detail', 'PageController@detail');
 
 /*
 |--------------------------------------------------------------------------

@@ -25,7 +25,7 @@
                 
                 
                 <div class="col-md-10">
-                    <table class="table table-striped table-dark mt-5">
+                    <table class="table table-striped table-light mt-5">
                         <tr>
                             <th width=20%>タイトル</th>
                             <th width=20%>公開日</th>
@@ -43,47 +43,11 @@
                             @endforeach
                             </td>
                             <td><img src="{{ 'https://image.tmdb.org/t/p/w185' . $tmdb['poster_path'] }}"></td>
-                            <td>{{ $tmdb['id'] }}</td>
+                            <td><a href="{{ action('PageController@detail', ['movie_id' => $tmdb['id']]) }}">詳細画面へ</a></td>
                         </tr>
                         @endforeach
                     </table>
                 </div>
-                
-                
-                {{-- adminの映画一覧
-                <div class="row">
-                    <div class="list-news col-md-12 mx-auto">
-                        <div class="row">
-                            <table class="table table-light">
-                                <thead class="table table-light">
-                                    <tr>
-                                        <th width="15%">映画タイトル</th>
-                                        <th width="10%">製作国</th>
-                                        <th width="10%">映画ジャンル</th>
-                                        <th width="10%">公開日</th>
-                                        <th width="10%">上映時間</th>
-                                        <th width="15%">監督</th>
-                                        <th width="15%">公式HP</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($posts as $movie)
-                                        <tr>
-                                            <td>{{ \Str::limit($movie->title, 100) }}</td>
-                                            <td>{{ \Str::limit($movie->country->name, 100) }}</td>
-                                            <td>{{ \Str::limit($movie->genre->name, 100) }}</td>
-                                            <td>{{ \Str::limit($movie->release, 100) }}</td>
-                                            <td>{{ \Str::limit($movie->movietime, 100) }}</td>
-                                            <td>{{ \Str::limit($movie->director, 100) }}</td>
-                                            <td>{{ \Str::limit($movie->HP, 100) }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                --}}
                 
             </div>
         </div>

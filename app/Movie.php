@@ -7,6 +7,7 @@ use App\Country;
 use App\Genre;
 use App\Recommendation;
 use GuzzleHttp\Client;
+use App\Comment;
 
 class Movie extends Model
 {
@@ -57,5 +58,10 @@ class Movie extends Model
     public function recommendations()
     {
         return $this->hasMany('App\Recommendation');
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }
