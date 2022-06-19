@@ -64,7 +64,7 @@
                                     {{--
                                     <td>    
                                         <div>
-                                            <a href="{{ action('Admin\UserController@delete', ['id' => $user->id]) }}">削除</a>
+                                            <a href="{{ action('Admin\UserController@delete', ['user_id' => $user->id]) }}">削除</a>
                                         </div>
                                     </td>
                                     --}}

@@ -25,7 +25,7 @@
                 
                 
                 <div class="col-md-10">
-                    <table class="table table-striped table-light mt-5">
+                    <table class="table table-striped table-light mt-4">
                         <tr>
                             <th width=20%>タイトル</th>
                             <th width=20%>公開日</th>

@@ -7,11 +7,21 @@
     <div class="row justify-content-center">
         <div class="group row col-md-12 row-inline">
             <div class="col-md-3">
+                    <h2>オススメ！数が多い映画</h2>
+                </div>
+                <div class="card">
+                    オススメされた数が多い映画を取得
+                </div>
+            </div>
+        </div>
+        
+        <div class="group col-md-12 row-inline">
+            <div class="col-md-3 mt-4">
                 <h2>UpComing??</h2>
             </div>
             
             <div class="col-md-10">
-                <table class="table table-striped table-light mt-5">
+                <table class="table table-striped table-light mt-4">
                     <tr>
                         <th width=20%>タイトル</th>
                         <th width=20%>公開日</th>

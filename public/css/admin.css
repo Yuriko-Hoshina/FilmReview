@@ -87,3 +87,26 @@ body {
   box-shadow: 0 2px 0 #aaaaaa;
 }
 
+.sub2 {
+  width: 100%;
+  height: 50px;
+  background-color: #CD5C5C;
+  padding-top: 5px;
+  box-sizing: border-box;
+}
+
+.sub2 > ul {
+  display: flex;
+}
+
+.sub2 > ul > li {
+  list-style: none;
+}
+
+.sub2 > ul > li > a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  margin-right: 35px;
+}
+

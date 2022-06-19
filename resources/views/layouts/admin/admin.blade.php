@@ -72,6 +72,13 @@
                     </div>
                 </div>
             </nav>
+            <nav class="sub2">
+                <ul>
+                    <li><a href="{{ action('PageController@info') }}">HOME</a></li>
+                    <li><a href="{{-- action('Admin\UserController@info') --}}#">ユーザー一覧</a></li>
+                    <li><a href="{{-- action('Admin\MovieController@info') --}}#">映画一覧</a></li>
+                </ul>
+            </nav>
             {{-- ここまでナビゲーションバー --}}
 
             <main class="py-4">

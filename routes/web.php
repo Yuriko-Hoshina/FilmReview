@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//メールとパスワードでログインした場合の変遷先を指定
+Route::get('/user/profile', 'PageController@mypage')->name('user/profile');
 
 
 /*
@@ -38,8 +39,9 @@ Route::get('movie/detail', 'PageController@detail');
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'auth:user'], function() {
-    //Route::get('/info', 'HomeController@info')->name('info');
-    Route::get('/home', 'PageController@info');
+    //Route::get('/', 'HomeController@info')->name('home');
+    Route::get('profile', 'PageController@mypage');
+    Route::get('movie/comment', 'User\CommentController@add');
 });
  
 /*
@@ -83,15 +85,15 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     Route::get('profile/create', 'User\ProfileController@add'); 
     Route::post('profile/create', 'User\ProfileController@create');
     Route::get('profile', 'User\ProfileController@info');
+    
+    Route::get('profile', 'PageController@mypage');
+    
     Route::get('profile/edit', 'User\ProfileController@edit');
     Route::post('profile/edit', 'User\ProfileController@update');
     Route::get('profile/delete', 'User\ProfileController@delete');
+    
     Route::get('recommend', 'User\RecommendController@info');
 });
-
-
-
-//Route::get('/home', 'PageController@home');
 
 
 

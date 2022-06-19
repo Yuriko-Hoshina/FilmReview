@@ -284,5 +284,106 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
         ]);*/
+        
+        \DB::table('scores')->insert([
+            [
+                'name' => '1点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '2点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '3点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '4点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '5点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '6点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '7点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '8点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '9点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '10点',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+        ]);
+        
+        \DB::table('feelings')->insert([
+            [
+                'name' => '感動したい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '元気を出したい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => 'ワクワクしたい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '癒されたい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => 'やる気を出したい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => 'キュンキュンしたい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => 'ひやひや/ゾクゾクしたい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => 'スカッとしたい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+            [
+                'name' => '笑いたい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
+        ]);
     }
 }

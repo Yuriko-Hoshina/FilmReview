@@ -7,6 +7,11 @@ use GuzzleHttp\Client;
 use App\Movie;
 use App\Country;
 use App\Genre;
+use App\Profile;
+use App\Age;
+use App\Gender;
+use App\User;
+use Auth;
 
 class PageController extends Controller
 {
@@ -93,9 +98,11 @@ class PageController extends Controller
     }
     
     
-    
-    public function mypage()
+    public function mypage(Request $request)
     {
-        return view();
+        $profile = Auth::user()->profile;
+        $user = Auth::user()->id;
+        
+        return view('user.profile.info', compact(['profile', 'user']));
     }
 }

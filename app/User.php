@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Profile;
 use App\SocialUser;
 use App\Comment;
+use Auth;
 
 class User extends Authenticatable
 {

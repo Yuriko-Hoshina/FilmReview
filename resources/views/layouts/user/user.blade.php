@@ -86,50 +86,53 @@
             </nav>
             <nav class="sub">
                 <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">マイページ</a></li>
-                    <li><a href="#">映画検索</a></li>
+                    <li><a href="{{ action('PageController@info') }}">HOME</a></li>
+                    <li><a href="{{ action('PageController@mypage') }}">マイページ</a></li>
+                    <li><a href="{{ action('PageController@search') }}">映画検索</a></li>
                 </ul>
             </nav>
             {{-- ここまでナビゲーションバー --}}
 
-            <main class="p-4" style="display:flex;">
-                <div class="col-md-10 mr-0">
+            <main class="main" style="display: flex; margin: 15px;">
+                <div class="group col-md-10">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます --}}
                 @yield('content')
                 </div>
                 
-                <div class="form-group col-md-2 ranking">
+                <div class="group col-md-2 ranking">
                     
-                    <div class="border us-ranking">
-                        <h4>興行収入ランキング(アメリカ)</h4>
-                        <h6>第１位　タイタニック</h6>
-                        <h6>第２位　アナと雪の女王</h6>
-                        <h6>第３位　ハリー・ポッターと賢者の石</h6>
-                        <h6>第４位　ハリー・ポッターと秘密の部屋</h6>
-                        <h6>第５位　アバター</h6>
-                        <h6>第６位　ラストサムライ</h6>
-                        <h6>第７位　Ｅ.Ｔ.</h6>
-                        <h6>第７位　アルマゲドン</h6>
-                        <h6>第７位　ハリー・ポッターとアズカバンの囚人</h6>
-                        <h6>第１０位　アナと雪の女王２</h6>
+                    <div class="card border us-ranking">
+                        <div class="card-header"><h4>興行収入ランキング(国内洋画)</h4></div>
+                        <div class="card-body">
+                            <h6>第１位　タイタニック</h6>
+                            <h6>第２位　アナと雪の女王</h6>
+                            <h6>第３位　ハリー・ポッターと賢者の石</h6>
+                            <h6>第４位　ハリー・ポッターと秘密の部屋</h6>
+                            <h6>第５位　アバター</h6>
+                            <h6>第６位　ラストサムライ</h6>
+                            <h6>第７位　Ｅ.Ｔ.</h6>
+                            <h6>第７位　アルマゲドン</h6>
+                            <h6>第７位　ハリー・ポッターとアズカバンの囚人</h6>
+                            <h6>第１０位　アナと雪の女王２</h6>
+                        </div>
                     </div>
                     
-                    
-                    <div class="border ja-ranking">
-                        <h4>興行収入ランキング(日本)</h4>
-                        <h6>第１位　劇場版「鬼滅の刃」無限列車編</h6>
-                        <h6>第２位　千と千尋の神隠し</h6>
-                        <h6>第３位　君の名は。</h6>
-                        <h6>第４位　もののけ姫</h6>
-                        <h6>第５位　ハウルの動く城</h6>
-                        <h6>第６位　踊る大捜査線　THE MOVIE2　レインボー・ブリッジを封鎖せよ！</h6>
-                        <h6>第７位　崖の上のポニョ</h6>
-                        <h6>第８位　天気の子</h6>
-                        <h6>第９位　劇場版　呪術廻戦 0</h6>
-                        <h6>第１０位　風立ちぬ</h6>
+                    <div class="card border ja-ranking">
+                        <div class="card-header"><h4>興行収入ランキング(国内邦画)</h4></div>
+                        <div class="card-body">
+                            <h6>第１位　劇場版「鬼滅の刃」無限列車編</h6>
+                            <h6>第２位　千と千尋の神隠し</h6>
+                            <h6>第３位　君の名は。</h6>
+                            <h6>第４位　もののけ姫</h6>
+                            <h6>第５位　ハウルの動く城</h6>
+                            <h6>第６位　踊る大捜査線　THE MOVIE2　レインボー・ブリッジを封鎖せよ！</h6>
+                            <h6>第７位　崖の上のポニョ</h6>
+                            <h6>第８位　天気の子</h6>
+                            <h6>第９位　劇場版　呪術廻戦 0</h6>
+                            <h6>第１０位　風立ちぬ</h6>
+                        </div>
                     </div>
-                
+                    
                 </div>
                 
             </main>

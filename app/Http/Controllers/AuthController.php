@@ -33,7 +33,7 @@ class AuthController extends Controller
         // Laravel 標準の Auth でログイン
         \Auth::login($user);
         
-        return redirect('/');
+        return redirect('/user/profile');
     }
     
     
