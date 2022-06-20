@@ -5,7 +5,7 @@
 @section('content')
 　　<div class="container">
 　　    <div class="row justify-content-center">
-            <div class="group row col-md-12 row-inline">
+            <div class="group row col-md-12 row-inline mt-4">
                 <div class="col-md-3">
                     <h2>映画検索</h2>
                 </div>
@@ -36,13 +36,13 @@
                         @foreach($posts['results'] as $tmdb)
                         <tr>
                             <td>{{ $tmdb['title'] }}</td>
-                            <td>{{ $tmdb['release_date'] }}</td>
+                            <td>{{ $tmdb['release_date']??'' }}</td>
                             <td>
                             @foreach($tmdb['genre_ids'] as $genre)
                                 {{ App\Genre::getName($genre) }}
                             @endforeach
                             </td>
-                            <td><img src="{{ 'https://image.tmdb.org/t/p/w185' . $tmdb['poster_path'] }}"></td>
+                            <td><img src="{{ 'https://image.tmdb.org/t/p/w185' . $tmdb['poster_path']??'' }}"></td>
                             <td><a href="{{ action('PageController@detail', ['movie_id' => $tmdb['id']]) }}">詳細画面へ</a></td>
                         </tr>
                         @endforeach

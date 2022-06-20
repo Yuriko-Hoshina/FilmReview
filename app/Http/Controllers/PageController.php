@@ -18,6 +18,7 @@ class PageController extends Controller
     // home,search,mypageに飛ぶ
     public function info(Request $request)
     {
+        
         //近日公開
         $tmdbapikey = config('app.tmdbapikey');
         $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=".$tmdbapikey."&language=ja-JA";
@@ -40,8 +41,7 @@ class PageController extends Controller
         $genres = json_decode($genres, true);
         //dd($posts);
         
-        //$index = $request;
-        
+        //$posts = Movie::getMovie();
         
         return view('home', ['posts' => $posts]);
     }
@@ -63,6 +63,8 @@ class PageController extends Controller
         $posts = $response->getBody();
         $posts = json_decode($posts, true);
         
+        //$posts = Movie::searchMovie();
+        
         }else{
         //検索内容に何もなければpopularで取得して表示
         $tmdbapikey = config('app.tmdbapikey');
@@ -75,8 +77,10 @@ class PageController extends Controller
 
         $posts = $response->getBody();
         $posts = json_decode($posts, true);
-        }
         //dd($posts);
+        
+        //$posts = Movie::getPopular();
+        }
         
         return view('search', compact(['search', 'posts']));
     }

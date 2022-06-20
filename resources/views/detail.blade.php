@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="group row col-md-12 row-inline">
-            <div class="col-md-3">
+            <div class="col-md-3 mt-4">
                 <h2>映画詳細</h2>
             </div>
             
@@ -52,7 +52,8 @@
             </div>
             
             <div>
-                <a href="{{ action('User\CommentController@add', ['movie_id' => $posts['id']]) }}">コメントする</a>
+                <a href="#">コメントする</a>
+                {{--action('User\CommentController@add', ['movie_id' => $posts['id']])--}}
             </div>
             
         </div>

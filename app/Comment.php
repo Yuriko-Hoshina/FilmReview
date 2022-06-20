@@ -3,10 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Movie;
+use App\User;
 
 class Comment extends Model
 {
     //
+    protected $guarded = array('id');
+    
+    public static $rules = array(
+        'score_id' => 'required',
+        'feeling_id' => 'required',
+        'comment' => 'required',
+    );
+    
     public function movie()
     {
         return $this->belongsTo('App\Movie');
@@ -16,4 +26,6 @@ class Comment extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
+    
 }

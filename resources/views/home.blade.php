@@ -5,11 +5,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="group row col-md-12 row-inline">
-            <div class="col-md-3">
+        <div class="group col-md-12 row-inline">
+            <div class="col-md-8 m-4">
                     <h2>オススメ！数が多い映画</h2>
                 </div>
-                <div class="card">
+                <div class="card col-md-10 m-4">
                     オススメされた数が多い映画を取得
                 </div>
             </div>

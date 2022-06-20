@@ -8,6 +8,8 @@ use App\Genre;
 use App\Recommendation;
 use GuzzleHttp\Client;
 use App\Comment;
+use App\Score;
+use App\Feeling;
 
 class Movie extends Model
 {
@@ -65,7 +67,68 @@ class Movie extends Model
         return $this->hasMany('App\Comment');
     }
     
-    public static function movieIndex($index)
+    public function scores()
+    {
+        return $this->hasMany('App\Score');
+    }
+    
+    public function feelings()
+    {
+        return $this->hasMany('App\Feeling');
+    }
+    
+    //以下、TMDbからの映画情報取得についての関数
+    public static function getDetail()
+    {
+        //詳細呼び出し
+        $tmdbapikey = config('app.tmdbapikey');
+        $url = "https://api.themoviedb.org/3/movie/" . $request->movie_id . "?api_key=".$tmdbapikey."&language=ja";
+        $method = "GET";
+
+        //接続
+        $client = new Client();
+
+        $response = $client->request($method, $url);
+
+        $posts = $response->getBody();
+        $posts = json_decode($posts, true);
+        
+        return $posts->get();
+    }
+    
+    public static function searchMovie()
+    {
+        $tmdbapikey = config('app.tmdbapikey');
+        $url = "https://api.themoviedb.org/3/search/movie?api_key=".$tmdbapikey."&language=ja&query=".$search."&include_adult=false";
+        $method = "GET";
+        
+        $client = new Client();
+
+        $response = $client->request($method, $url);
+
+        $posts = $response->getBody();
+        $posts = json_decode($posts, true);
+        
+        return $posts->get();
+    }
+    
+    public static function getPopular()
+    {
+        $tmdbapikey = config('app.tmdbapikey');
+        $url = "https://api.themoviedb.org/3/movie/popular?api_key=".$tmdbapikey."&language=ja";
+        $method = "GET";
+
+        $client = new Client();
+
+        $response = $client->request($method, $url);
+
+        $posts = $response->getBody();
+        $posts = json_decode($posts, true);
+        
+        return $posts->get();
+    }
+    
+    public static function getMovie()
     {
         //近日公開
         $tmdbapikey = config('app.tmdbapikey');
@@ -87,8 +150,8 @@ class Movie extends Model
 
         $genres = $response->getBody();
         $genres = json_decode($genres, true);
-        //dd($posts);
         
         return $posts->get();
     }
+    
 }

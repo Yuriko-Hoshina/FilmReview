@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Movie;
+use App\User;
 
 class Recommendation extends Model
 {

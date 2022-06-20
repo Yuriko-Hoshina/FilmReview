@@ -41,8 +41,9 @@ Route::get('movie/detail', 'PageController@detail');
 Route::group(['middleware' => 'auth:user'], function() {
     //Route::get('/', 'HomeController@info')->name('home');
     Route::get('profile', 'PageController@mypage');
-    Route::get('movie/comment', 'User\CommentController@add');
-    Route::get('movie/comment', 'User\CommentController@create');
+    Route::get('comment', 'User\CommentController@add');
+    Route::get('comment', 'User\CommentController@create');
+    
 });
  
 /*
@@ -94,6 +95,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     Route::get('profile/delete', 'User\ProfileController@delete');
     
     Route::get('recommend', 'User\RecommendController@info');
+    Route::get('comment', 'User\CommentController@info');
 });
 
 

@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="group row col-md-12 row-inline">
                 <div class="col-md-3">
-                    <h2>{{ Auth:user()->name }}さんのコメントした映画</h2>
+                    <h2>{{ $name }}さんのコメントした映画</h2>
                 </div>
                 
                 <div class="col-md-10 mt-4">

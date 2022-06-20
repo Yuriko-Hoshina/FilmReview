@@ -7,25 +7,23 @@ use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use App\User;
 use Auth;
+use App\Score;
+use App\Feeling;
+use Carbon\Carbon;
+use App\Movie;
+use App\Comment;
 
 class CommentController extends Controller
 {
     //
     public function add(Request $request)
     {
-        $tmdbapikey = config('app.tmdbapikey');
-        $url = "https://api.themoviedb.org/3/movie/" . $request->movie_id . "?api_key=".$tmdbapikey."&language=ja";
-        $method = "GET";
+        //$posts = Movie::getDetail();
         
-        //接続
-        $client = new Client();
-
-        $response = $client->request($method, $url);
-
-        $posts = $response->getBody();
-        $posts = json_decode($posts, true);
+        $scores = Score::all();
+        $feelings = Feeling::all();
         
-        return view('comment', ['posts' => $posts]);
+        return view('comment', compact([/*'posts',*/ 'scores', 'feelings']));
     }
     
     public function create(Request $request)
@@ -41,6 +39,13 @@ class CommentController extends Controller
         
         $comment->fill($form)->save();
         
-        return redirect('movie/comment');
+        return redirect('comment');
+    }
+    
+    public function info()
+    {
+        $name = Auth::user()->profile->name;
+        
+        return view('user.movie.comment', ['name' => $name]);
     }
 }
