@@ -40,6 +40,9 @@ class PageController extends Controller
         $genres = json_decode($genres, true);
         //dd($posts);
         
+        //$index = $request;
+        
+        
         return view('home', ['posts' => $posts]);
     }
     

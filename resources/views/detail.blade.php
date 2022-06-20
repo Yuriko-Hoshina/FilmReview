@@ -50,9 +50,11 @@
             <div class="col-md-3">
                 <a href="{{ url('movie/search') }}">検索画面へ戻る</a>
             </div>
+            
             <div>
                 <a href="{{ action('User\CommentController@add', ['movie_id' => $posts['id']]) }}">コメントする</a>
             </div>
+            
         </div>
         
         <div class="group col-md-12">

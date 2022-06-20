@@ -41,13 +41,6 @@
                     <div class="form-group row">
                         <label class="col-md-2">どんな気分の時にこの映画を観たい？</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="title" value="{{ }}">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-md-2">どんな気分の時にこの映画を観たい？</label>
-                        <div class="col-md-10">
                             <select type="text" class="form-control" name="feeling_id">
                                 {{-- プルダウンメニュー --}}
                                 <option value=" " @if(old('feeling_id') == " ") selected="selected" @endif>選択してください</option>
@@ -69,6 +62,9 @@
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-primary" value="評価する">
                     </div>
+                    
+                    <div>Twitterに共有する</div>
+                    <div>オススメ！する</div>
                     
             </div>
         </div>

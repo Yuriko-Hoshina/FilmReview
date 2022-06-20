@@ -64,4 +64,31 @@ class Movie extends Model
     {
         return $this->hasMany('App\Comment');
     }
+    
+    public static function movieIndex($index)
+    {
+        //近日公開
+        $tmdbapikey = config('app.tmdbapikey');
+        $url = "https://api.themoviedb.org/3/movie/upcoming?api_key=".$tmdbapikey."&language=ja-JA";
+        $method = "GET";
+
+        //接続
+        $client = new Client();
+
+        $response = $client->request($method, $url);
+
+        $posts = $response->getBody();
+        $posts = json_decode($posts, true);
+        
+        //ジャンルの日本語対応
+        $tmdbapikey = config('app.tmdbapikey');
+        $url = "https://api.themoviedb.org/3/genre/movie/list?api_key=".$tmdbapikey."&language=ja-JA";
+        $response = $client->request($method, $url);
+
+        $genres = $response->getBody();
+        $genres = json_decode($genres, true);
+        //dd($posts);
+        
+        return $posts->get();
+    }
 }

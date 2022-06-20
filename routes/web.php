@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth:user'], function() {
     //Route::get('/', 'HomeController@info')->name('home');
     Route::get('profile', 'PageController@mypage');
     Route::get('movie/comment', 'User\CommentController@add');
+    Route::get('movie/comment', 'User\CommentController@create');
 });
  
 /*
