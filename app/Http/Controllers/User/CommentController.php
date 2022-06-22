@@ -18,12 +18,25 @@ class CommentController extends Controller
     //
     public function add(Request $request)
     {
+        //$movie_id = $request->movie_id;
         //$posts = Movie::getDetail();
+        
+        $tmdbapikey = config('app.tmdbapikey');
+        $url = "https://api.themoviedb.org/3/movie/" . $request->movie_id . "?api_key=".$tmdbapikey."&language=ja";
+        $method = "GET";
+
+        //接続
+        $client = new Client();
+
+        $response = $client->request($method, $url);
+
+        $posts = $response->getBody();
+        $posts = json_decode($posts, true);
         
         $scores = Score::all();
         $feelings = Feeling::all();
         
-        return view('comment', compact([/*'posts',*/ 'scores', 'feelings']));
+        return view('user.comment.create', compact(['posts', 'scores', 'feelings']));
     }
     
     public function create(Request $request)
@@ -39,7 +52,7 @@ class CommentController extends Controller
         
         $comment->fill($form)->save();
         
-        return redirect('comment');
+        return redirect('/comment');
     }
     
     public function info()

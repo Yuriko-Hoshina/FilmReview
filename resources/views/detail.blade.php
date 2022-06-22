@@ -52,7 +52,7 @@
             </div>
             
             <div>
-                <a href="#">コメントする</a>
+                <a href="{{ action('User\CommentController@add', ['movie_id' => $posts['id']]) }}">コメントする</a>
                 {{--action('User\CommentController@add', ['movie_id' => $posts['id']])--}}
             </div>
             

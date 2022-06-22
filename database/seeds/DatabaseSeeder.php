@@ -285,7 +285,7 @@ class DatabaseSeeder extends Seeder
             ],
         ]);*/
         
-        \DB::table('scores')->insert([
+        /*\DB::table('scores')->insert([
             [
                 'name' => '1点',
                 'created_at' => new DateTime(),
@@ -384,6 +384,6 @@ class DatabaseSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
-        ]);
+        ]);*/
     }
 }
