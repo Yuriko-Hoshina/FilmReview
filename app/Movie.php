@@ -154,4 +154,14 @@ class Movie extends Model
         return $posts->get();
     }
     
+    //オススメ機能に関して
+    public function recommends() 
+    {
+        return Recommendation::where('movie_id', $this->id)->get();
+    }
+    
+    public function recommendCount() 
+    {
+        return Recommendation::where('movie_id', $this->id)->count();
+    }
 }

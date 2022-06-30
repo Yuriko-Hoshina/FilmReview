@@ -99,37 +99,37 @@
                 @yield('content')
                 </div>
                 
-                <div class="group col-md-2 ranking">
+                <div class="group col-md-2 ranking mt-4">
                     
                     <div class="card border us-ranking">
                         <div class="card-header"><h4>興行収入ランキング(国内洋画)</h4></div>
                         <div class="card-body">
-                            <h6>第１位　タイタニック</h6>
-                            <h6>第２位　アナと雪の女王</h6>
-                            <h6>第３位　ハリー・ポッターと賢者の石</h6>
-                            <h6>第４位　ハリー・ポッターと秘密の部屋</h6>
-                            <h6>第５位　アバター</h6>
-                            <h6>第６位　ラストサムライ</h6>
-                            <h6>第７位　Ｅ.Ｔ.</h6>
-                            <h6>第７位　アルマゲドン</h6>
-                            <h6>第７位　ハリー・ポッターとアズカバンの囚人</h6>
-                            <h6>第１０位　アナと雪の女王２</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=597") }}>第１位　タイタニック</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=109445") }}>第２位　アナと雪の女王</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=671") }}>第３位　ハリー・ポッターと賢者の石</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=672") }}>第４位　ハリー・ポッターと秘密の部屋</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=19995") }}>第５位　アバター</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=616") }}>第６位　ラストサムライ</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=601") }}>第７位　Ｅ.Ｔ.</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=95") }}>第７位　アルマゲドン</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=673") }}>第７位　ハリー・ポッターとアズカバンの囚人</a></h6>
+                            <h6><a href={{ url("movie/detail?movie_id=330457") }}>第１０位　アナと雪の女王２</a></h6>
                         </div>
                     </div>
                     
                     <div class="card border ja-ranking">
                         <div class="card-header"><h4>興行収入ランキング(国内邦画)</h4></div>
                         <div class="card-body">
-                            <h6>第１位　劇場版「鬼滅の刃」無限列車編</h6>
-                            <h6>第２位　千と千尋の神隠し</h6>
-                            <h6>第３位　君の名は。</h6>
-                            <h6>第４位　もののけ姫</h6>
-                            <h6>第５位　ハウルの動く城</h6>
-                            <h6>第６位　踊る大捜査線　THE MOVIE2　レインボー・ブリッジを封鎖せよ！</h6>
-                            <h6>第７位　崖の上のポニョ</h6>
-                            <h6>第８位　天気の子</h6>
-                            <h6>第９位　劇場版　呪術廻戦 0</h6>
-                            <h6>第１０位　風立ちぬ</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=635302") }}>第１位　劇場版「鬼滅の刃」無限列車編</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=129") }}>第２位　千と千尋の神隠し</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=372058") }}>第３位　君の名は。</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=128") }}>第４位　もののけ姫</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=4935") }}>第５位　ハウルの動く城</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=55384") }}>第６位　踊る大捜査線　THE MOVIE2　レインボー・ブリッジを封鎖せよ！</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=12429") }}>第７位　崖の上のポニョ</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=568160") }}>第８位　天気の子</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=810693") }}>第９位　劇場版　呪術廻戦 0</h6>
+                            <h6><a href={{ url("movie/detail?movie_id=149870") }}>第１０位　風立ちぬ</h6>
                         </div>
                     </div>
                     

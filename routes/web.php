@@ -80,22 +80,28 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('movie/edit', 'Admin\MovieController@edit');
     Route::post('movie/edit', 'Admin\MovieController@update');
     Route::get('movie/delete', 'Admin\MovieController@delete');
+    
     Route::get('user', 'Admin\UserController@info');
+    Route::get('user/delete', 'Admin\UserController@delete');
+    
+    
 });
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     Route::get('profile/create', 'User\ProfileController@add'); 
     Route::post('profile/create', 'User\ProfileController@create');
     Route::get('profile', 'User\ProfileController@info');
-    
     Route::get('profile', 'PageController@mypage');
-    
     Route::get('profile/edit', 'User\ProfileController@edit');
     Route::post('profile/edit', 'User\ProfileController@update');
     Route::get('profile/delete', 'User\ProfileController@delete');
     
-    Route::get('recommend', 'User\RecommendController@info');
     Route::get('comment', 'User\CommentController@info');
+    Route::get('comment/edit', 'User\CommentController@edit');
+    Route::post('comment/edit', 'User\CommentController@update');
+    Route::get('comment/delete', 'User\CommentController@delete');
+    
+    Route::get('recommend', 'User\RecommendController@info');
 });
 
 

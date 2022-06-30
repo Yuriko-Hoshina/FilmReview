@@ -30,13 +30,14 @@ class CommentController extends Controller
 
         $response = $client->request($method, $url);
 
-        $posts = $response->getBody();
-        $posts = json_decode($posts, true);
+        $post = $response->getBody();
+        $post = json_decode($post, true);
+        //dd($post);
         
         $scores = Score::all();
         $feelings = Feeling::all();
         
-        return view('user.comment.create', compact(['posts', 'scores', 'feelings']));
+        return view('user.comment.create', compact(['post', 'scores', 'feelings']));
     }
     
     public function create(Request $request)
@@ -52,13 +53,56 @@ class CommentController extends Controller
         
         $comment->fill($form)->save();
         
-        return redirect('/comment');
+        return redirect('user/comment');
     }
     
-    public function info()
+    public function info(Request $request)
     {
-        $name = Auth::user()->profile->name;
+        $user = Auth::user();
         
-        return view('user.movie.comment', ['name' => $name]);
+        //$commentedMovies = $user->commentedMovies();
+        //dd($commentedMovies);
+        
+        $scores = Score::all();
+        $feelings = Feeling::all();
+        
+        return view('user.movie.comment', compact(['user', 'scores', 'feelings']));
     }
+    
+    public function edit(Request $request)
+    {
+        $comment = Comment::find($request->id);
+        //dd($comment);
+        
+        if(empty($comment)){
+            abort(404);
+        }
+        
+        $scores = Score::all();
+        $feelings = Feeling::all();
+        
+        return view('user.comment.edit', compact(['comment', 'scores', 'feelings']));
+    }
+    
+    public function update(Request $request)
+    {
+        $this->validate($request, Comment::$rules);
+        $comment = Comment::find($request->id);
+        $comment_form = $request->all();
+        
+        unset($comment_form['_token']);
+        
+        $comment->fill($comment_form)->save();
+        
+        return redirect('user/comment');
+    }
+    
+    public function delete(Request $request)
+    {
+        $comment = Comment::find($request->id);
+        $comment->delete();
+        
+        return redirect('user/comment');
+    }
+    
 }

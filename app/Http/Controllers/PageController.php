@@ -12,6 +12,7 @@ use App\Age;
 use App\Gender;
 use App\User;
 use Auth;
+use App\Comment;
 
 class PageController extends Controller
 {
@@ -101,7 +102,10 @@ class PageController extends Controller
         $posts = json_decode($posts, true);
         //dd($url, $posts);
         
-        return view('detail', ['posts' => $posts]);
+        $comments = Comment::where('movie_id', $request->movie_id)->get();
+        //dd($comments);
+        
+        return view('detail', ['posts' => $posts, 'comments' => $comments]);
     }
     
     
@@ -112,4 +116,5 @@ class PageController extends Controller
         
         return view('user.profile.info', compact(['profile', 'user']));
     }
+    
 }

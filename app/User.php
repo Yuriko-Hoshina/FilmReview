@@ -9,6 +9,10 @@ use App\Profile;
 use App\SocialUser;
 use App\Comment;
 use Auth;
+use GuzzleHttp\Client;
+use App\Recommendetion;
+use App\Score;
+use App\Feeling;
 
 class User extends Authenticatable
 {
@@ -82,4 +86,67 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Feeling');
     }
+    
+    /*
+    public function recommendations(){
+        
+        return Recommendation::where('movie_id', $this->id)->get();
+    }
+    */
+    
+    public function commentedMovies()
+    {
+        $ids = Comment::where('user_id', $this->id)->groupby('movie_id')->pluck('movie_id');
+        //dd($ids);
+        
+        // 空の配列を作っておく
+        $movies = [];
+        
+        foreach($ids as $id){
+            
+            $tmdbapikey = config('app.tmdbapikey');
+            $url = "https://api.themoviedb.org/3/movie/" . $id . "?api_key=" . $tmdbapikey . "&language=ja";
+            $method = "GET";
+    
+            //接続
+            $client = new Client();
+    
+            $response = $client->request($method, $url);
+    
+            $data = $response->getBody();
+            $data = json_decode($data, true);
+            // TMDbから、$idの映画の情報をapiで取得
+            // ... jasonDecodeしたデータを$dataに入れる
+            // $moviesに、映画の情報を追加
+            $movies[] = $data;
+        }
+        
+        return $movies;
+        
+    }
+    
+    public function getScore($id)
+    {
+        $score = Comment::where('user_id', $this->id)->where('movie_id', $id)->first(); 
+        
+        return $score->score_id;
+    }
+    
+    public function getFeeling($id)
+    {
+        $feeling = Comment::where('user_id', $this->id)->where('movie_id', $id)->first(); 
+        //dd($feeling->feeling_id);
+        
+        return Feeling::find($feeling->feeling_id);
+    }
+    
+    public function getComment($id)
+    {
+        $comment = Comment::where('user_id', $this->id)->where('movie_id', $id)->first(); 
+        
+        return $comment;
+    }
+    
+    //今ログインしているユーザーが持ってるコメントに、リクエストでもらったTMDｂのmovie_idがあるかどうか
+    
 }

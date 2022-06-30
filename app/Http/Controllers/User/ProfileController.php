@@ -52,7 +52,6 @@ class ProfileController extends Controller
     
     public function info(Request $request)
     {
-        
         $profile = Auth::user()->profile;
         $user = Auth::user()->id;
         

@@ -11,6 +11,8 @@ use App\Age;
 use App\Gender;
 use App\Genre;
 use App\SocialUser;
+use App\Comment;
+use App\Recommendation;
 
 class UserController extends Controller
 {
@@ -52,7 +54,13 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         $user = User::find($request->id);
+        
+        $user->profile_id->delete();
+        
+        Comment::where('user_id', $user->id)->delete();
+        Recommendation::where('user_id', $user->id)->delete();
         $user->delete();
+        
         return redirect('admin/user');
     }
     

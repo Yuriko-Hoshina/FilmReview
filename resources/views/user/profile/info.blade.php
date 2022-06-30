@@ -31,10 +31,9 @@
                     
                     <div class="card-body">
                         <table class="table table-light mt-4">
-                            <tr><img src="{{ asset('storage/image/' . $profile->image_path) }}" width="200" height="200"></tr>
                             
+                            <tr><img src="{{ asset('storage/image/' . optional($profile)->image_path) }}" width="200" height="200"></tr>
                             
-                            {{--<tr><h4>{{ $profile->name??'' }}さん</h4></tr>--}}
                             <tr>
                                 <th width="10%">性別</th>
                                 <td>{{ \Str::limit($profile->gender->name??'', 100) }}</td>

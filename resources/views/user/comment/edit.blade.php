@@ -1,14 +1,14 @@
 @extends('layouts.user.user')
 
-@section('title', 'コメント評価')
+@section('title', 'コメント編集')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="group row col-md-12 row-inline">
                 <div class="col-md-12 m-4">
-                    <h2>コメント評価</h2>
-                        <form action="{{ action('User\CommentController@create') }}" method="post" enctype="multipart/form-data">
+                    <h2>コメント評価編集</h2>
+                        <form action="{{ action('User\CommentController@edit') }}" method="post" enctype="multipart/form-data">
                         @if (count($errors) > 0)
                             <ul>
                                 @foreach($errors->all() as $e)
@@ -20,7 +20,7 @@
                         <div class="form-group row mt-4">
                             <label class="col-md-4">映画タイトル</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="title" readonly="readonly" value="{{ \Str::limit($post['title'], 100) }}">
+                                <input type="text" class="form-control" name="title" readonly="readonly" value="{{ $comment->title }}">
                             </div>
                         </div>
                         
@@ -30,9 +30,9 @@
                             <div class="col-md-6">
                                 <select type="text" class="form-control" name="score_id">
                                     {{-- プルダウンメニュー --}}
-                                    <option value=" " @if(old('score_id') == " ") selected="selected" @endif>選択してください</option>
+                                    <option value=" " @if(old('score_id', $comment->score_id) == " ") selected="selected" @endif>選択してください</option>
                                     @foreach($scores as $score)
-                                        <option value="{{ $score->id }}" @if(old('score_id') == ($score->id)) selected="selected" @endif>{{ $score->name }}</option>
+                                        <option value="{{ $score->id }}" @if(old('score_id', $comment->score_id) == $score->id) selected="selected" @endif>{{ $score->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -43,9 +43,9 @@
                             <div class="col-md-6">
                                 <select type="text" class="form-control" name="feeling_id">
                                     {{-- プルダウンメニュー --}}
-                                    <option value=" " @if(old('feeling_id') == " ") selected="selected" @endif>選択してください</option>
+                                    <option value=" " @if(old('feeling_id', $comment->feeling_id) == " ") selected="selected" @endif>選択してください</option>
                                     @foreach($feelings as $feeling)
-                                        <option value="{{ $feeling->id }}" @if(old('feeling_id') == ($feeling->id)) selected="selected" @endif>{{ $feeling->name }}</option>
+                                        <option value="{{ $feeling->id }}" @if(old('feeling_id', $comment->feeling_id) == $feeling->id) selected="selected" @endif>{{ $feeling->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -54,22 +54,22 @@
                         <div class="form-group row mt-4">
                             <label class="col-md-4">コメント</label>
                             <div class="col-md-7">
-                                <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
+                                <textarea class="form-control" name="body" rows="20">{{ $comment->body }}</textarea>
                             </div>
                         </div>
                         
+                        <div class="form-group row">
+                            <div class="col-md-10">
+                                <input type="hidden" name="id" value="{{ $comment->id }}">
+                                {{ csrf_field() }}
+                                <input type="submit" class="btn btn-primary" value="更新">
+                            </div>
+                        </div>
                         
                         <div class="form-group row">Twitterに共有する</div>
                         
                         <div class="form-group row">
-                            <form method="post" action="">
                             <input type="checkbox" name="recommend" value="オススメ">オススメする
-                        </div>
-                        
-                        <div class="form-group row">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="movie_id" value="{{ $post['id'] }}">
-                            <input type="submit" class="btn btn-primary" value="評価する">
                         </div>
                         
                 </div>

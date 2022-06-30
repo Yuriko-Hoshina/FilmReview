@@ -14,7 +14,7 @@ class Comment extends Model
     public static $rules = array(
         'score_id' => 'required',
         'feeling_id' => 'required',
-        'comment' => 'required',
+        'body' => 'required',
     );
     
     public function movie()
