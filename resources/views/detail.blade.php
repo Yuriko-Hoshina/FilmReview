@@ -14,9 +14,9 @@
                 <button type="submit" class="btn btn-primary">
                 <a href="{{ action('User\CommentController@add', ['movie_id' => $posts['id']]) }}">コメントする</a>
                 </burron>
-               
-               {{--
-                @if( != null)
+                
+               {{-- ログインしているユーザーが持っているコメント内に、リクエストでもらったTMDｂのidがあるかどうか 
+                @if($user_comment != null)
                     <button type="submit" class="btn btn-primary">
                     <a href="{{ action('User\CommentController@edit', ['movie_id' => $posts['id']]) }}">編集</a>
                     </button>
@@ -34,7 +34,15 @@
                     
                     <tr>
                         <th><img src="{{ 'https://image.tmdb.org/t/p/w185' . $posts['poster_path'] }}"></th>
-                        <td>{{ $posts['title'] }}</td>
+                        <td><h3>{{ $posts['title'] }}</h3></td>
+                    </tr>
+                    <tr>
+                        <th width=10%>平均点</th>
+                         @if($average != null)
+                        <td><h4>{{ $average. "点" }}</h4>/10点</td>
+                        @else
+                        <td>-点/10点</td>
+                        @endif
                     </tr>
                     <tr>
                         <th width=15%>公開日</th>
@@ -81,24 +89,32 @@
                 <table class="table table-striped table-light mt-4">
                     <thead class="table table-striped table-light">
                         <tr>
-                            <th width="30%">コメント</th>
-                            <th width="15%">ユーザーネーム</th>
+                            <th width="10%">ユーザーネーム</th>
+                            <th width="70%">コメント</th>
                             <th width="10%">投稿日時</th>
+                            <th width="10%">操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($comments as $comment)
                             <tr>
+                                <td>{{ $comment->user->profile->name }}</td>
                                 <td>{{ $comment['body'] }}</td>
-                                <td>{{ $comment['user_id'] }}</td>
                                 <td>{{ $comment['updated_at'] }}</td>
+                                
+                                <td>
+                                    @if($comment->user->id == Auth::id())
+                                    <a href="{{ route('edit.comment', ['id' => $comment->id]) }}">編集</a>
+                                    @endif
+                                </td>
+                                
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>  
             @else
-            <div>ログインすると見れます</div>
+            <div>※ログインすると見れます</div>
             @endif
         
         </div>

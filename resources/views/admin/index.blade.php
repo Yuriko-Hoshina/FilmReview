@@ -4,13 +4,13 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="group row">
             <h2>管理者ページ</h2>
+            <div class="col-md-6" style="float: right;">{{ $comments->links() }}</div>
         </div>
         <div class="group row">
             <div class="col-md-12">
                 <div class="row">
-                    <h6>全ユーザーのコメントを最新のものから10件程出したい</h6>
                     <table class="table table-striped table-light mt-4">
                     <tr>
                         <th width=5%>コメントID</th>
@@ -24,16 +24,18 @@
                         <td>{{ $comment['id'] }}</td>
                         <td>{{ $comment['title'] }}</td>
                         <td>{{ $comment['body'] }}</td>
-                        <td>{{ $comment['user_id'] }}</td>
+                        <td>{{ $comment->user->profile->name }}</td>
                         <td>{{ $comment['updated_at'] }}</td>
                     </tr>
                     @endforeach
                 </div>
             </div>
+        </div>
             
-            
+        <div class="group row">    
             <div class="col-md-12">
                 <div class="row">
+                    {{--<div><h2>Popular</h2></div>--}}
                     <table class="table table-striped table-light mt-4">
                     <tr>
                         <th width=20%>タイトル</th>
@@ -55,7 +57,7 @@
                         <td><a href="{{ action('PageController@detail', ['movie_id' => $tmdb['id']]) }}">詳細画面へ</a></td>
                     </tr>
                     @endforeach
-                </table>
+                    </table>
                 </div>
             </div>
         </div>

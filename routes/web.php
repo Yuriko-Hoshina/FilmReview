@@ -41,8 +41,7 @@ Route::get('movie/detail', 'PageController@detail');
 Route::group(['middleware' => 'auth:user'], function() {
     //Route::get('/', 'HomeController@info')->name('home');
     Route::get('profile', 'PageController@mypage');
-    Route::get('comment', 'User\CommentController@add');
-    Route::post('comment', 'User\CommentController@create');
+    
     
 });
  
@@ -76,7 +75,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('movie/create', 'Admin\MovieController@add');
     Route::post('movie/create', 'Admin\MovieController@create');
     Route::get('movie', 'Admin\MovieController@info');
-    Route::get('movie', 'Admin\MovieController@search');
+    //Route::get('movie/search', 'Admin\MovieController@search');
     Route::get('movie/edit', 'Admin\MovieController@edit');
     Route::post('movie/edit', 'Admin\MovieController@update');
     Route::get('movie/delete', 'Admin\MovieController@delete');
@@ -84,6 +83,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('user', 'Admin\UserController@info');
     Route::get('user/delete', 'Admin\UserController@delete');
     
+    Route::get('comment', 'Admin\HomeController@comment');
+    Route::get('comment/delete', 'Admin\HomeController@commentDelete');
     
 });
 
@@ -96,10 +97,13 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     Route::post('profile/edit', 'User\ProfileController@update');
     Route::get('profile/delete', 'User\ProfileController@delete');
     
-    Route::get('comment', 'User\CommentController@info');
-    Route::get('comment/edit', 'User\CommentController@edit');
+    Route::get('comments', 'User\CommentController@info');
+    Route::get('comment/edit', 'User\CommentController@edit')->name("edit.comment");
     Route::post('comment/edit', 'User\CommentController@update');
     Route::get('comment/delete', 'User\CommentController@delete');
+    Route::get('comment', 'User\CommentController@add');
+    Route::post('comment', 'User\CommentController@create');
+    
     
     Route::get('recommend', 'User\RecommendController@info');
 });

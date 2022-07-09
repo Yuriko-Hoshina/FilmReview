@@ -32,6 +32,7 @@ class PageController extends Controller
 
         $posts = $response->getBody();
         $posts = json_decode($posts, true);
+        //dd($posts);
         
         //ジャンルの日本語対応
         $tmdbapikey = config('app.tmdbapikey');
@@ -102,10 +103,13 @@ class PageController extends Controller
         $posts = json_decode($posts, true);
         //dd($url, $posts);
         
-        $comments = Comment::where('movie_id', $request->movie_id)->get();
+        $comments = Comment::where('movie_id', $request->movie_id)->orderBy('updated_at', 'desc')->get();
         //dd($comments);
         
-        return view('detail', ['posts' => $posts, 'comments' => $comments]);
+        $average = round(Comment::where('movie_id', $request->movie_id)->pluck('score_id')->avg(), 1);
+        //dd($average);
+        
+        return view('detail', compact(['posts', 'comments', 'average']));
     }
     
     

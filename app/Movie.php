@@ -36,6 +36,7 @@ class Movie extends Model
         return $this->belongsTo('App\Genre');
     }
     
+    /*
     public static function searchByKeyword($q)
     {
         $query = self::query();
@@ -56,6 +57,7 @@ class Movie extends Model
           
         return $query->get();
     }
+    */
     
     public function recommendations()
     {

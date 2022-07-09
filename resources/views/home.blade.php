@@ -9,18 +9,19 @@
             <div class="col-md-8 m-4">
                     <h2>オススメ！数が多い映画</h2>
                 </div>
-                <div class="card col-md-10 m-4">
-                    オススメされた数が多い映画を取得
+                <div class="card col-md-8 m-4">
+                    オススメされた数が多い映画を取得<br>
+                    映画/何点/オススメ数
                 </div>
             </div>
         </div>
         
         <div class="group col-md-12 row-inline">
-            <div class="col-md-3 mt-4">
+            <div class="col-md-3 m-4">
                 <h2>UpComing??</h2>
             </div>
             
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <table class="table table-striped table-light mt-4">
                     <tr>
                         <th width=20%>タイトル</th>
@@ -44,27 +45,6 @@
                     @endforeach
                 </table>
             </div>
-            
-            
-            {{--
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                    HOME画面表示
-                    
-                </div>
-            </div>
-            --}}
-            
-            
         </div>
     </div>
 </div>

@@ -54,8 +54,11 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         $user = User::find($request->id);
+        //dd($user);
         
-        $user->profile_id->delete();
+        if($user->profile != null){
+            $user->profile->delete();
+        }
         
         Comment::where('user_id', $user->id)->delete();
         Recommendation::where('user_id', $user->id)->delete();

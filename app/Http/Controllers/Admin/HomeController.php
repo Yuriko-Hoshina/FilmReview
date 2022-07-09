@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use App\User;
 use App\Comment;
+use App\Profile;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        //全ユーザーのコメント内容(最新10件)とそれをコメントしたユーザーを表示
-        $comments = Comment::all();
+        //全ユーザーのコメント内容(最新10件)を表示
+        $comments = Comment::orderBy('updated_at', 'desc')->paginate(10);
         
         //TMDbからPopularを呼び出し
         $tmdbapikey = config('app.tmdbapikey');
@@ -43,5 +44,20 @@ class HomeController extends Controller
         $posts = json_decode($posts, true);
         
         return view('admin.index', compact(['comments', 'posts']));
+    }
+    
+    public function comment(Request $request)
+    {
+        $comments = Comment::orderBy('updated_at', 'desc')->paginate(10);
+        
+        return view('admin.comment', ['comments' => $comments]);
+    }
+    
+    public function commentDelete(Request $request)
+    {
+        $comment = Comment::find($request->id);
+        $comment->delete();
+        
+        return redirect('admin/comment');
     }
 }

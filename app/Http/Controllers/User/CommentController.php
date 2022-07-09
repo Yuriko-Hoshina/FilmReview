@@ -53,7 +53,7 @@ class CommentController extends Controller
         
         $comment->fill($form)->save();
         
-        return redirect('user/comment');
+        return redirect('user/comments');
     }
     
     public function info(Request $request)
@@ -66,6 +66,9 @@ class CommentController extends Controller
         $scores = Score::all();
         $feelings = Feeling::all();
         
+        //一覧の並びを日付順にしたい
+        
+            
         return view('user.movie.comment', compact(['user', 'scores', 'feelings']));
     }
     
@@ -94,7 +97,7 @@ class CommentController extends Controller
         
         $comment->fill($comment_form)->save();
         
-        return redirect('user/comment');
+        return redirect('user/comments');
     }
     
     public function delete(Request $request)
@@ -102,7 +105,7 @@ class CommentController extends Controller
         $comment = Comment::find($request->id);
         $comment->delete();
         
-        return redirect('user/comment');
+        return redirect('user/comments');
     }
     
 }

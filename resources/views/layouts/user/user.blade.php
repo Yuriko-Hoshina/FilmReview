@@ -89,6 +89,10 @@
                     <li><a href="{{ action('PageController@info') }}">HOME</a></li>
                     <li><a href="{{ action('PageController@mypage') }}">マイページ</a></li>
                     <li><a href="{{ action('PageController@search') }}">映画検索</a></li>
+                    @if(Auth::user() != null)
+                    <li><a href="{{ action('User\CommentController@info') }}">コメント一覧</a></li>
+                    <li><a href="#">オススメ一覧</a></li>
+                    @endif
                 </ul>
             </nav>
             {{-- ここまでナビゲーションバー --}}

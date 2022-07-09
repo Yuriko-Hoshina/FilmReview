@@ -12,6 +12,8 @@ use App\User;
 use Carbon\Carbon;
 use Auth;
 use App\ProfileHistory;
+//use App\Comment;
+//use App\Recommendation;
 
 class ProfileController extends Controller
 {
@@ -53,17 +55,17 @@ class ProfileController extends Controller
     public function info(Request $request)
     {
         $profile = Auth::user()->profile;
-        $user = Auth::user()->id;
         
-        return view('user.profile.info', compact(['profile', 'user']));
+        //ログインしてるユーザーのコメントした映画を取得したい(同一映画はまとめて表示)
+        $comments = Auth::user();
+        //dd($comments);
+        
+        return view('user.profile.info', compact(['profile', 'comments']));
     }
     
     public function edit(Request $request)
     {
         $profile = Auth::user()->profile;
-        if(empty($profile)){
-            abort(404);
-        }
         
         $genders = Gender::all();
         $genres = Genre::all();

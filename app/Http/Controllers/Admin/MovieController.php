@@ -34,9 +34,44 @@ class MovieController extends Controller
     
     public function info(Request $request)
     {
-        return view('admin.movie.info');
+        /*
+        $q = $request->q;
+        
+        if($q != ''){
+            
+            $q = $request->q;
+            //  製作国、ジャンルに関して検索できるように指定
+            $country = Country::where('name', 'like', '%' . $q. '%')->first();
+            if ($country) {
+                $q = Country::where('country_id', $country->id);
+                //$q = $q->where('country_id', $country->id);
+            }
+            
+            $genre = Genre::where('name', 'like', '%' . $q. '%')->first();
+            if ($genre) {
+                //Genre::orWhere('genre_id', $genre->id);
+                $q = $q->orWhere('genre_id', $genre->id);
+            }
+            
+            //  タイトル、公開日、監督に関して検索できるように指定
+            $q = $q->orWhere('title', 'like', '%' . $q . '%')->
+              orWhere('release', 'like', '%' . $q. '%')->
+              orWhere('director', 'like', '%' . $q. '%');
+              
+            
+            //$posts = Movie::searchByKeyword($q);
+        }else{
+            $posts = Movie::all();
+        }
+        */
+        
+        //pagination
+        $posts = Movie::paginate(10);
+        
+        return view('admin.movie.info', compact(['posts'/*, 'q'*/]));
     }
     
+    /*
     public function search(Request $request)
     {
         $q = $request->q;
@@ -45,10 +80,11 @@ class MovieController extends Controller
             $posts = Movie::searchByKeyword($q);
         }else{
             $posts = Movie::all();
-        } 
+        }
         
         return view('admin.movie.info', compact(['posts', 'q']));
     }
+    */
     
     public function edit(Request $request)
     {

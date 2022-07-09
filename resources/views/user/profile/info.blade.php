@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <div class="group row inline">
+        <div class="group row inline m-4">
             <div class="col-md-5">
                 <h2>マイプロフィール</h2>
             </div>
@@ -24,64 +24,81 @@
         </div>
         
         <div class="card mt-4 list-profile col-md-12 mx-auto">
-                {{--<div class="row">--}}
-                    @php $profile = Auth::user()->profile; @endphp
+            @php $profile = Auth::user()->profile; @endphp
+            
+            <div class="card-header"><h4>{{ $profile->name??'' }}さん</h4></div>
+            
+            <div class="card-body">
+                <table class="table table-light mt-4">
                     
-                    <div class="card-header"><h4>{{ $profile->name??'' }}さん</h4></div>
+                    <tr><img src="{{ asset('storage/image/' . optional($profile)->image_path) }}" width="200" height="200"></tr>
                     
-                    <div class="card-body">
-                        <table class="table table-light mt-4">
-                            
-                            <tr><img src="{{ asset('storage/image/' . optional($profile)->image_path) }}" width="200" height="200"></tr>
-                            
-                            <tr>
-                                <th width="10%">性別</th>
-                                <td>{{ \Str::limit($profile->gender->name??'', 100) }}</td>
-                            </tr>    
-                            <tr>        
-                                <th width="10%">年代</th>
-                                <td>{{ \Str::limit($profile->age->name??'', 100) }}</td>
-                            </tr>   
-                            <tr>
-                                <th width="15%">好きなジャンル</th>
-                                <td>{{ \Str::limit($profile->genre->name??'', 100) }}</td>
-                            </tr>    
-                            <tr>        
-                                <th width="15%">マイベストムービー</th>
-                                <td>{{ \Str::limit($profile->best_movie??'', 100) }}</td>
-                            </tr>    
-                            <tr>        
-                                <th width="10%">自己紹介</th>
-                                <td>{{ \Str::limit($profile->introduction??'', 100) }}</td>
-                                {{-- <th width="15%">操作</th>
-                                <td>
-                                    <div>
-                                        <a href="{{ action('User\ProfileController@edit', ['id' => $profile->id]) }}">編集</a>
-                                    </div>
-                                    <div>
-                                        <a href="{{ action('User\ProfileController@delete', ['id' => $profile->id]) }}">削除</a>
-                                    </div>
-                                </td> --}}
-                            </tr>
-                            
-                        </table>
-                    </div>
-                {{--</div>--}}
+                    <tr>
+                        <th width="10%">性別</th>
+                        <td>{{ \Str::limit($profile->gender->name??'', 100) }}</td>
+                    </tr>    
+                    <tr>        
+                        <th width="10%">年代</th>
+                        <td>{{ \Str::limit($profile->age->name??'', 100) }}</td>
+                    </tr>   
+                    <tr>
+                        <th width="15%">好きなジャンル</th>
+                        <td>{{ \Str::limit($profile->genre->name??'', 100) }}</td>
+                    </tr>    
+                    <tr>        
+                        <th width="20%">マイベストムービー</th>
+                        <td>{{ \Str::limit($profile->best_movie??'', 100) }}</td>
+                    </tr>    
+                    <tr>        
+                        <th width="10%">自己紹介</th>
+                        <td>{{ $profile->introduction??'' }}</td>
+                    </tr>
+                    
+                </table>
+            </div>
         </div>
         
-        <div class="group row inline m-4">
+        <div class="col-md-12 group row inline mt-4">
             <div class="card mr-4">
-                <div class="card-header">コメントした映画</div>
+                <div class="card-header"><h4>コメントした映画</h4></div>
                 <div class="card-body">
-                    
+                    <table class="table table-light mt-4">
+                        
+                        <tr>
+                            
+                            <th>タイトル</th>
+                            
+                            @foreach($comments as $comment)
+                                <td>{{ $comment['title'] }}</td><br>
+                            @endforeach
+                            
+                        </tr>    
+                        <tr>
+                            <th>点数</th>
+                            {{--
+                            @foreach($comments as $comment)
+                                <td>{{ $comment['score_id'] . "点" }}</td>
+                            @endforeach
+                            --}}
+                        </tr>
+                        
+                    </table>
                 </div>
             </div>
             
             
             <div class="card">
-                <div class="card-header">オススメ！した映画</div>
+                <div class="card-header"><h4>オススメ！した映画</h4></div>
                 <div class="card-body">
-                    
+                    <table class="table table-light mt-4">
+                        
+                        <tr>
+                            
+                            <th>タイトル</th>
+                            
+                        </tr>
+                        
+                    </table>
                 </div>
             </div>
         </div>

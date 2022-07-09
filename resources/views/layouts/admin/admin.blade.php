@@ -74,9 +74,10 @@
             </nav>
             <nav class="sub2">
                 <ul>
-                    <li><a href="{{ action('PageController@info') }}">HOME</a></li>
-                    <li><a href="#">ユーザー一覧</a></li>
-                    <li><a href="#">コメント一覧</a></li>
+                    <li><a href="{{ action('Admin\HomeController@index') }}">HOME</a></li>
+                    <li><a href="{{ action('Admin\UserController@info') }}">ユーザー一覧</a></li>
+                    <li><a href="{{ action('Admin\HomeController@comment') }}">コメント一覧</a></li>
+                    <li><a href="{{ action('Admin\MovieController@info') }}">登録映画(手動)一覧</a></li>
                 </ul>
             </nav>
             {{-- ここまでナビゲーションバー --}}

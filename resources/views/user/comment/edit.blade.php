@@ -8,7 +8,7 @@
             <div class="group row col-md-12 row-inline">
                 <div class="col-md-12 m-4">
                     <h2>コメント評価編集</h2>
-                        <form action="{{ action('User\CommentController@edit') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ action('User\CommentController@update') }}" method="post" enctype="multipart/form-data">
                         @if (count($errors) > 0)
                             <ul>
                                 @foreach($errors->all() as $e)

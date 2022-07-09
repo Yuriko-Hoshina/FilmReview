@@ -11,8 +11,9 @@
             <div class="col-md-5">
                 <a href="{{ action('Admin\MovieController@add') }}" role="button" class="btn btn-primary">新規登録</a>
             </div>
+            {{--
             <div class="col-md-4">
-                <form action="{{ action('Admin\MovieController@search') }}" method="get">
+                <form action="{{ action('Admin\MovieController@info') }}" method="get">
                     <div class="form-group row form-inline">
                         <label>検索</label>
                         <div class="col-md-8">
@@ -25,10 +26,11 @@
                     </div>
                 </form>
             </div>
+            --}}
         </div>
         <div>Filmarksを参照</div>
         <div class="row">
-            <div class="list-news col-md-12 mx-auto">
+            <div class="col-md-12 mx-auto">
                 <div class="row">
                     <table class="table table-light">
                         <thead class="table table-light">
@@ -69,9 +71,11 @@
                     </table>
                 </div>
             </div>
+            
+            <div style="float: right;">{{ $posts->links() }}</div>
+            
         </div>
     </div>
     
-    {{--<div>{{ $movies->links() }}</div>--}}
-    
+
 @endsection

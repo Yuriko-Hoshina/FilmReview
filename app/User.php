@@ -147,6 +147,10 @@ class User extends Authenticatable
         return $comment;
     }
     
-    //今ログインしているユーザーが持ってるコメントに、リクエストでもらったTMDｂのmovie_idがあるかどうか
     
+    
+    
+    
+    
+
 }
