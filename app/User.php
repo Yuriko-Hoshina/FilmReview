@@ -13,6 +13,8 @@ use GuzzleHttp\Client;
 use App\Recommendetion;
 use App\Score;
 use App\Feeling;
+use App\MovieScore;
+use App\MovieFeeling;
 
 class User extends Authenticatable
 {
@@ -87,6 +89,17 @@ class User extends Authenticatable
         return $this->hasMany('App\Feeling');
     }
     
+    public function movie_scores()
+    {
+        return $this->hasMany('App\MovieScore');
+    }
+    
+    public function movie_feelings()
+    {
+        return $this->hasMany('App\MovieFeeling');
+    }
+    
+    
     /*
     public function recommendations(){
         
@@ -96,7 +109,7 @@ class User extends Authenticatable
     
     public function commentedMovies()
     {
-        $ids = Comment::where('user_id', $this->id)->groupby('movie_id')->pluck('movie_id');
+        $ids = Comment::where('user_id', $this->id)/*->groupby('movie_id')*/->pluck('movie_id');
         //dd($ids);
         
         // 空の配列を作っておく

@@ -17,10 +17,8 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('movie_id')->nullable();
-            $table->string('body');
-            $table->string('title');
-            $table->bigInteger('score_id');
-            $table->bigInteger('feeling_id');
+            $table->text('body');
+            $table->text('title');
             $table->timestamps();
         });
     }

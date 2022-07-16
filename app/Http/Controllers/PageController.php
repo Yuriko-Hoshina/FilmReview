@@ -13,6 +13,10 @@ use App\Gender;
 use App\User;
 use Auth;
 use App\Comment;
+use App\Feeling;
+use App\Score;
+use App\MovieFeeling;
+use App\MovieScore;
 
 class PageController extends Controller
 {
@@ -43,7 +47,6 @@ class PageController extends Controller
         $genres = json_decode($genres, true);
         //dd($posts);
         
-        //$posts = Movie::getMovie();
         
         return view('home', ['posts' => $posts]);
     }
@@ -81,7 +84,6 @@ class PageController extends Controller
         $posts = json_decode($posts, true);
         //dd($posts);
         
-        //$posts = Movie::getPopular();
         }
         
         return view('search', compact(['search', 'posts']));
@@ -103,13 +105,20 @@ class PageController extends Controller
         $posts = json_decode($posts, true);
         //dd($url, $posts);
         
+        //映画に対するコメントを更新順に並び変える
         $comments = Comment::where('movie_id', $request->movie_id)->orderBy('updated_at', 'desc')->get();
         //dd($comments);
         
-        $average = round(Comment::where('movie_id', $request->movie_id)->pluck('score_id')->avg(), 1);
+        
+        $feelings = MovieFeeling::where('movie_id', $request->movie_id)->pluck('feeling_id');
+        //dd($feelings);
+        
+        //映画の平均点
+        $average = round(MovieScore::where('movie_id', $request->movie_id)->pluck('score_id')->avg(), 1);
         //dd($average);
         
-        return view('detail', compact(['posts', 'comments', 'average']));
+        
+        return view('detail', compact(['posts', 'feelings', 'comments', 'average']));
     }
     
     
@@ -118,7 +127,12 @@ class PageController extends Controller
         $profile = Auth::user()->profile;
         $user = Auth::user()->id;
         
-        return view('user.profile.info', compact(['profile', 'user']));
+        $comments = Comment::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->limit(10)->get();
+        //dd($comments);
+        
+        
+        
+        return view('user.profile.info', compact(['profile', 'user', 'comments']));
     }
     
 }

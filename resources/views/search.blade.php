@@ -13,7 +13,7 @@
                     <form action="{{ action('PageController@search') }}" method="get">
                         <div class="form-group row form-inline">
                             <div class="col-md-8 mr-4">
-                                <input type="text" class="form-control" name="search" placeholder="映画を検索" value="{{ $search }}">
+                                <input type="text" class="form-control" name="search" placeholder="映画タイトルで検索" value="{{ $search }}">
                             </div>
                             <div class="col-md-2 ml-2">
                                 {{ csrf_field() }}

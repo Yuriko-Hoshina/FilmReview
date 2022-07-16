@@ -10,6 +10,8 @@ use GuzzleHttp\Client;
 use App\Comment;
 use App\Score;
 use App\Feeling;
+use App\MovieScore;
+use App\MovieFeeling;
 
 class Movie extends Model
 {
@@ -78,6 +80,17 @@ class Movie extends Model
     {
         return $this->hasMany('App\Feeling');
     }
+    
+    public function movie_scores()
+    {
+        return $this->hasMany('App\MovieScore');
+    }
+    
+    public function movie_feelings()
+    {
+        return $this->hasMany('App\MovieFeeling');
+    }
+    
     
     //以下、TMDbからの映画情報取得についての関数
     public static function getDetail()

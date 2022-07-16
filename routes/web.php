@@ -91,7 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
 Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     Route::get('profile/create', 'User\ProfileController@add'); 
     Route::post('profile/create', 'User\ProfileController@create');
-    Route::get('profile', 'User\ProfileController@info');
+    //Route::get('profile', 'User\ProfileController@info');
     Route::get('profile', 'PageController@mypage');
     Route::get('profile/edit', 'User\ProfileController@edit');
     Route::post('profile/edit', 'User\ProfileController@update');
@@ -101,8 +101,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     Route::get('comment/edit', 'User\CommentController@edit')->name("edit.comment");
     Route::post('comment/edit', 'User\CommentController@update');
     Route::get('comment/delete', 'User\CommentController@delete');
+    
+    Route::post('comments', 'User\CommentController@create');
     Route::get('comment', 'User\CommentController@add');
-    Route::post('comment', 'User\CommentController@create');
+    Route::post('/', 'User\CommentController@scoreCreate');
     
     
     Route::get('recommend', 'User\RecommendController@info');

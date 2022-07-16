@@ -40,7 +40,18 @@
                         @endforeach
                         </td>
                         <td><img src="{{ 'https://image.tmdb.org/t/p/w185' . $tmdb['poster_path'] }}"></td>
-                        <td><a href="{{ action('PageController@detail', ['movie_id' => $tmdb['id']]) }}">詳細画面へ</a></td>
+                        <td><a href="{{ action('PageController@detail', ['movie_id' => $tmdb['id']]) }}">詳細画面へ</a><br>
+                        <p></p><br>
+                        {{--
+                        <div>
+                            @if(Auth::user()->recommend = null)
+                            <a href="#"><img src="{{ asset('storage/image/heart-black.png') }}" width="30" height="30"></a>
+                            @else
+                            <a href="#"><img src="{{ asset('storage/image/heart-pink.png') }}" width="30" height="30"></a>
+                            @endif
+                            </div>
+                        </td>
+                        --}}
                     </tr>
                     @endforeach
                 </table>

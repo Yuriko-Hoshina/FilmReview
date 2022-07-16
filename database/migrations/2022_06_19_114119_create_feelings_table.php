@@ -15,8 +15,6 @@ class CreateFeelingsTable extends Migration
     {
         Schema::create('feelings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->nullable();
-            $table->bigInteger('movie_id')->nullable();
             $table->string('name');
             $table->timestamps();
         });

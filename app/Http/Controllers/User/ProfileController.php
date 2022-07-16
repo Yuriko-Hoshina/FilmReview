@@ -52,16 +52,18 @@ class ProfileController extends Controller
         return redirect('user/profile');
     }
     
+    /*
     public function info(Request $request)
     {
         $profile = Auth::user()->profile;
         
         //ログインしてるユーザーのコメントした映画を取得したい(同一映画はまとめて表示)
-        $comments = Auth::user();
+        //$comments = Auth::user()->comment->title;
         //dd($comments);
         
         return view('user.profile.info', compact(['profile', 'comments']));
     }
+    */
     
     public function edit(Request $request)
     {

@@ -1,14 +1,14 @@
 @extends('layouts.user.user')
 
-@section('title', 'コメント評価')
+@section('title', '評価画面')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="group row col-md-12 row-inline">
                 <div class="col-md-12 m-4">
-                    <h2>コメント評価</h2>
-                        <form action="{{ action('User\CommentController@create') }}" method="post" enctype="multipart/form-data">
+                    <h2>評価画面</h2>
+                        <form action="{{ action('User\CommentController@scoreCreate') }}" method="post" enctype="multipart/form-data">
                         @if (count($errors) > 0)
                             <ul>
                                 @foreach($errors->all() as $e)
@@ -51,6 +51,19 @@
                             </div>
                         </div>
                         
+                        <div class="col-md-12 group row m-4" style="display: flex; justify-content: flex-end;">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    {{ csrf_field() }}
+                                
+                                    <input type="hidden" name="movie_id" value="{{ $post['id'] }}">
+                                    <input type="submit" class="btn btn-primary" value="評価する">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        {{--
                         <div class="form-group row mt-4">
                             <label class="col-md-4">コメント</label>
                             <div class="col-md-7">
@@ -58,19 +71,28 @@
                             </div>
                         </div>
                         
-                        
-                        <div class="form-group row">Twitterに共有する</div>
-                        
-                        <div class="form-group row">
-                            <form method="post" action="">
-                            <input type="checkbox" name="recommend" value="オススメ">オススメする
+                        <div class="col-md-12 group row m-4" style="display: flex; justify-content: flex-end;">
+                            
+                            <div class="form-group">
+                                <form method="post" action="">
+                                <input type="checkbox" name="shere" value="共有">Twitterに共有する
+                            </div>
+                            
+                            <div class="form-group mr-4 ml-4">
+                                <form method="post" action="">
+                                <input type="checkbox" name="recommend" value="オススメ">オススメする
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    {{ csrf_field() }}
+                                
+                                    <input type="hidden" name="movie_id" value="{{ $post['id'] }}">
+                                    <input type="submit" class="btn btn-primary" value="評価する">
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="form-group row">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="movie_id" value="{{ $post['id'] }}">
-                            <input type="submit" class="btn btn-primary" value="評価する">
-                        </div>
+                        --}}
                         
                 </div>
             </div>

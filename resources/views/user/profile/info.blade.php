@@ -26,12 +26,23 @@
         <div class="card mt-4 list-profile col-md-12 mx-auto">
             @php $profile = Auth::user()->profile; @endphp
             
-            <div class="card-header"><h4>{{ $profile->name??'' }}さん</h4></div>
+            <div class="card-header">
+                @if(Auth::user()->profile)
+                    <h4>{{ $profile->name }}さん</h4>
+                @else
+                    <h4>ユーザーネーム未設定さん</h4>
+                @endif
+            </div>
             
             <div class="card-body">
                 <table class="table table-light mt-4">
-                    
-                    <tr><img src="{{ asset('storage/image/' . optional($profile)->image_path) }}" width="200" height="200"></tr>
+                    <tr>
+                        @if(Auth::user()->profile->image_path != null)
+                        <img src="{{ asset('storage/image/' . $profile->image_path) }}" width="200" height="200">
+                        @else
+                        <img src="{{ Auth::user()->getAvatar() }}" width="200" height="200">
+                        @endif
+                    </tr>
                     
                     <tr>
                         <th width="10%">性別</th>
@@ -62,27 +73,14 @@
             <div class="card mr-4">
                 <div class="card-header"><h4>コメントした映画</h4></div>
                 <div class="card-body">
-                    <table class="table table-light mt-4">
-                        
-                        <tr>
-                            
-                            <th>タイトル</th>
-                            
+                        <ul style="padding-left: 20px;">
                             @foreach($comments as $comment)
-                                <td>{{ $comment['title'] }}</td><br>
+                                <li>
+                                    <td><a href={{ url('movie/detail?movie_id=' . $comment['movie_id'] . '') }}>{{ $comment['title'] }}</a></td>
+                                </li>
                             @endforeach
-                            
-                        </tr>    
-                        <tr>
-                            <th>点数</th>
-                            {{--
-                            @foreach($comments as $comment)
-                                <td>{{ $comment['score_id'] . "点" }}</td>
-                            @endforeach
-                            --}}
-                        </tr>
-                        
-                    </table>
+                        </ul>
+                        <a href="{{ action('User\CommentController@info') }}">もっとみる</a>
                 </div>
             </div>
             
@@ -95,7 +93,7 @@
                         <tr>
                             
                             <th>タイトル</th>
-                            
+                            <a href="#}">もっとみる</a>
                         </tr>
                         
                     </table>

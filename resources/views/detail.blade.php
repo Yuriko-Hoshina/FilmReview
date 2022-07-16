@@ -12,7 +12,7 @@
             <div class="col-md-4">
                 
                 <button type="submit" class="btn btn-primary">
-                <a href="{{ action('User\CommentController@add', ['movie_id' => $posts['id']]) }}">コメントする</a>
+                <a href="{{ action('User\CommentController@add', ['movie_id' => $posts['id']]) }}">評価する</a>
                 </burron>
                 
                {{-- ログインしているユーザーが持っているコメント内に、リクエストでもらったTMDｂのidがあるかどうか 
@@ -34,15 +34,26 @@
                     
                     <tr>
                         <th><img src="{{ 'https://image.tmdb.org/t/p/w185' . $posts['poster_path'] }}"></th>
-                        <td><h3>{{ $posts['title'] }}</h3></td>
+                            <td><h3>{{ $posts['title'] }}</h3><br>
+                            
+                            <p>Q.どんな時に観たい？</p><br>
+                            <p>
+                            @foreach($feelings as $feeling)
+                                {{ $feeling->feeling->name }}
+                            @endforeach
+                            </p>
+                            
+                        </td>
                     </tr>
                     <tr>
                         <th width=10%>平均点</th>
+                        
                          @if($average != null)
                         <td><h4>{{ $average. "点" }}</h4>/10点</td>
                         @else
                         <td>-点/10点</td>
                         @endif
+                        
                     </tr>
                     <tr>
                         <th width=15%>公開日</th>
@@ -58,7 +69,11 @@
                     </tr>
                     <tr>
                         <th width=10%>上映時間</th>
-                        <td>{{ $posts['runtime']??'' }}</td>
+                        @if($posts['runtime'] != null)
+                        <td>{{ $posts['runtime'] . "分" }}</td>
+                        @else
+                        <td>-分</td>
+                        @endif
                     </tr>
                     <tr>
                         <th width=40%>あらすじ</th>
@@ -86,6 +101,45 @@
             
             @if(Auth::user() != null)
             <div>
+                <ul>
+                    <li>段落を変えて表示させる場合は行の終わりに「&lt;br&gt;」とつけてください。</li>
+                    <li>コメントにはネタバレが含まれる場合があります。ご自身で十分にご注意ください。</li>
+                    <li>不適切な内容があった場合、該当コメントは予告なく削除される場合があります。</li>
+                    <li>ユーザー間での交流の際は「>>>(ユーザーネーム)さん」を最初につけるようにしてください。</li>
+                </ul>
+                
+                <div class="group col">
+                    <form action="{{ action('User\CommentController@create') }}" method="post" enctype="multipart/form-data">
+                        @if (count($errors) > 0)
+                            <ul>
+                                @foreach($errors->all() as $e)
+                                    <li>{{ $e }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                        
+                        <div class="form-group row mt-4">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="title" readonly="readonly" value="{{ $posts['title'] }}">
+                            </div>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <label class="col-md-3"><h5>コメント記入欄</h5></label>
+                            <div class="col-md-10">
+                                <textarea class="form-control" name="body" rows="10">{{ old('body') }}</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12" style="display: flex; justify-content: flex-end;">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="movie_id" value="{{ $posts['id'] }}">
+                                <input type="submit" class="btn btn-primary" value="コメントする">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
                 <table class="table table-striped table-light mt-4">
                     <thead class="table table-striped table-light">
                         <tr>
@@ -112,6 +166,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
             </div>  
             @else
             <div>※ログインすると見れます</div>

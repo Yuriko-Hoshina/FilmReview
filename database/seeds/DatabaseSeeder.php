@@ -384,6 +384,11 @@ class DatabaseSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
+            [
+                'name' => '泣きたい',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
+            ],
         ]);*/
     }
 }

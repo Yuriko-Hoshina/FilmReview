@@ -11,10 +11,13 @@ class Comment extends Model
     //
     protected $guarded = array('id');
     
+    public static $comment_rules = array(
+        'body' => 'required',
+    );
+    
     public static $rules = array(
         'score_id' => 'required',
         'feeling_id' => 'required',
-        'body' => 'required',
     );
     
     public function movie()

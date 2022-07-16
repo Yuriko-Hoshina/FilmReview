@@ -32,7 +32,7 @@
                     </div>
                     
                     {{--    
-                    @if(Auth::user()->unique_id = null)
+                    @if(Auth::user()->profile->image_path = null)
                         <div class="form-group row">
                             <label class="col-md-2" for="image">アイコン</label>
                             <div class="col-md-10">

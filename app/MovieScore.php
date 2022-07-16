@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Movie;
 use App\User;
-use App\MovieScore;
+use App\Score;
 
-class Score extends Model
+class MovieScore extends Model
 {
     //
     public function movie()
@@ -20,8 +20,8 @@ class Score extends Model
         return $this->belongsTo('App\User');
     }
     
-    public function movie_score()
+    public function score()
     {
-        return $this->belongsTo('App\MovieScore');
+        return $this->hasOne('App\Score');
     }
 }
