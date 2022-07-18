@@ -13,6 +13,7 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('password');

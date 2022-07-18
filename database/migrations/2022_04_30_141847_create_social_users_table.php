@@ -13,6 +13,7 @@ class CreateSocialUsersTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('social_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned()->index();

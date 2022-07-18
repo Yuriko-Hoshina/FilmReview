@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRecommendationsTable extends Migration
+class CreateMovieGenresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class CreateRecommendationsTable extends Migration
     public function up()
     {
         $this->down();
-        Schema::create('recommendations', function (Blueprint $table) {
+        Schema::create('movie_genres', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
             $table->bigInteger('movie_id');
+            $table->bigInteger('genre_id');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateRecommendationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recommendations');
+        Schema::dropIfExists('movie_genres');
     }
 }

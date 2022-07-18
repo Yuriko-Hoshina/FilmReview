@@ -13,6 +13,7 @@ class CreateProfileHistoriesTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('profile_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('profile_id');

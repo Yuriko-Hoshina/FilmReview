@@ -73,12 +73,22 @@
             <div class="card mr-4">
                 <div class="card-header"><h4>コメントした映画</h4></div>
                 <div class="card-body">
-                        <ul style="padding-left: 20px;">
+                        <ul style="padding-left: 10px;">
+                            {{--
+                            @foreach($user->commentedMovies() as $movie)
+                                @php $comment = $user->getComment($movie['id']); @endphp 
+                                    <tr>
+                                        <td><a href={{ url('movie/detail?movie_id=' . $movie['id'] . '') }}>{{ $movie['title'] }}</a></td>
+                                    </td>
+                            @endforeach
+                            --}}
+                            
                             @foreach($comments as $comment)
                                 <li>
                                     <td><a href={{ url('movie/detail?movie_id=' . $comment['movie_id'] . '') }}>{{ $comment['title'] }}</a></td>
                                 </li>
                             @endforeach
+                            
                         </ul>
                         <a href="{{ action('User\CommentController@info') }}">もっとみる</a>
                 </div>
@@ -88,15 +98,7 @@
             <div class="card">
                 <div class="card-header"><h4>オススメ！した映画</h4></div>
                 <div class="card-body">
-                    <table class="table table-light mt-4">
-                        
-                        <tr>
-                            
-                            <th>タイトル</th>
-                            <a href="#}">もっとみる</a>
-                        </tr>
-                        
-                    </table>
+                    <a href="#}">もっとみる</a>
                 </div>
             </div>
         </div>

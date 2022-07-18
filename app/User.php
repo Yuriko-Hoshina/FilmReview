@@ -15,6 +15,7 @@ use App\Score;
 use App\Feeling;
 use App\MovieScore;
 use App\MovieFeeling;
+use App\MovieGenre;
 
 class User extends Authenticatable
 {
@@ -99,17 +100,16 @@ class User extends Authenticatable
         return $this->hasMany('App\MovieFeeling');
     }
     
-    
-    /*
-    public function recommendations(){
-        
-        return Recommendation::where('movie_id', $this->id)->get();
+    public function movie_genres()
+    {
+        return $this->hasMany('App\MovieGenre');
     }
-    */
+    
+    
     
     public function commentedMovies()
     {
-        $ids = Comment::where('user_id', $this->id)/*->groupby('movie_id')*/->pluck('movie_id');
+        $ids = Comment::where('user_id', $this->id)->groupby('movie_id')->pluck('movie_id');
         //dd($ids);
         
         // 空の配列を作っておく

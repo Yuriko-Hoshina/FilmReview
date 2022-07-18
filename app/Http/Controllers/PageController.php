@@ -17,6 +17,7 @@ use App\Feeling;
 use App\Score;
 use App\MovieFeeling;
 use App\MovieScore;
+use App\Recommendation;
 
 class PageController extends Controller
 {
@@ -47,8 +48,10 @@ class PageController extends Controller
         $genres = json_decode($genres, true);
         //dd($posts);
         
+        $recommend = Recommendation::where('movie_id', $request->movie_id)->get();
+        //dd($recommend);
         
-        return view('home', ['posts' => $posts]);
+        return view('home', compact(['posts']));
     }
     
     public function search(Request $request)
@@ -104,6 +107,7 @@ class PageController extends Controller
         $posts = $response->getBody();
         $posts = json_decode($posts, true);
         //dd($url, $posts);
+        
         
         //映画に対するコメントを更新順に並び変える
         $comments = Comment::where('movie_id', $request->movie_id)->orderBy('updated_at', 'desc')->get();

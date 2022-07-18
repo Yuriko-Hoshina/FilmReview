@@ -10,6 +10,8 @@ use App\Feeling;
 class MovieFeeling extends Model
 {
     //
+    protected $guarded = array('id');
+    
     public function movie()
     {
         return $this->belongsTo('App\Movie');
@@ -22,6 +24,6 @@ class MovieFeeling extends Model
     
     public function feeling()
     {
-        return $this->hasOne('App\Feeling');
+        return $this->belongsTo('App\Feeling');
     }
 }

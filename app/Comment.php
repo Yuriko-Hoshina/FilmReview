@@ -13,6 +13,7 @@ class Comment extends Model
     
     public static $comment_rules = array(
         'body' => 'required',
+        'title' => 'required',
     );
     
     public static $rules = array(

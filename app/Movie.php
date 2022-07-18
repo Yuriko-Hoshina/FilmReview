@@ -12,20 +12,29 @@ use App\Score;
 use App\Feeling;
 use App\MovieScore;
 use App\MovieFeeling;
+use App\MovieGenre;
+use App\MovieActor;
+use App\MovieDirector;
 
 class Movie extends Model
 {
     //
-    protected $guarded = array('id');
+    protected $fillable = array('id', 'poster_path', 'adult', 'overview',
+        'release_date', 'original_title', 'original_language',
+        'title', 'popularity', 'vote_count', 'video', 'vote_average', 'backdrop_path', 'homepage',
+        'runtime');
 
     public static $rules = array(
+        'adult' => 'required',
+        'overview' => 'required',
+        'release_date' => 'required',
+        'original_title' => 'required',
+        'original_language' => 'required',
         'title' => 'required',
-        'director' => 'required',
-        'movietime' => 'required',
-        'genre_id' => 'required',
-        'country_id' => 'required',
-        'release' => 'required|date',
-        'HP' => 'required',
+        'popularity' => 'required',
+        'vote_count' => 'required',
+        'video' => 'required',
+        'vote_average' => 'required',
     );
     
     public function country()
@@ -89,6 +98,21 @@ class Movie extends Model
     public function movie_feelings()
     {
         return $this->hasMany('App\MovieFeeling');
+    }
+    
+    public function movie_genres()
+    {
+        return $this->hasMany('App\MovieGenre');
+    }
+    
+    public function movie_actors()
+    {
+        return $this->hasMany('App\MovieActor');
+    }
+    
+    public function movie_directors()
+    {
+        return $this->hasMany('App\MovieDirector');
     }
     
     

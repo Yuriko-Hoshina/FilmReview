@@ -14,6 +14,7 @@ class MovieFeelings extends Migration
     public function up()
     {
         //
+        $this->down();
         Schema::create('movie_feelings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->nullable();

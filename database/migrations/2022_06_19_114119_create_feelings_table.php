@@ -13,6 +13,7 @@ class CreateFeelingsTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('feelings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');

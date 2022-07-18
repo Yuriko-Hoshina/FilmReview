@@ -140,36 +140,40 @@
                     </form>
                 </div>
                 
-                <table class="table table-striped table-light mt-4">
-                    <thead class="table table-striped table-light">
-                        <tr>
-                            <th width="10%">ユーザーネーム</th>
-                            <th width="70%">コメント</th>
-                            <th width="10%">投稿日時</th>
-                            <th width="10%">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($comments as $comment)
+                {{--@if($comments != "")--}}
+                    <table class="table table-striped table-light mt-4">
+                        <thead class="table table-striped table-light">
                             <tr>
-                                <td>{{ $comment->user->profile->name }}</td>
-                                <td>{{ $comment['body'] }}</td>
-                                <td>{{ $comment['updated_at'] }}</td>
-                                
-                                <td>
-                                    @if($comment->user->id == Auth::id())
-                                    <a href="{{ route('edit.comment', ['id' => $comment->id]) }}">編集</a>
-                                    @endif
-                                </td>
-                                
+                                <th width="10%">ユーザーネーム</th>
+                                <th width="70%">コメント</th>
+                                <th width="10%">投稿日時</th>
+                                <th width="10%">操作</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach($comments as $comment)
+                                <tr>
+                                    <td>{{ $comment->user->profile->name }}</td>
+                                    <td>{{ $comment['body'] }}</td>
+                                    <td>{{ $comment['updated_at'] }}</td>
+                                    
+                                    <td>
+                                        @if($comment->user->id == Auth::id())
+                                        <a href="{{ route('edit.comment', ['id' => $comment->id]) }}">編集</a>
+                                        @endif
+                                    </td>
+                                    
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                {{--@else
+                    <div><h4>この映画に対するコメントはまだありません</h4></div>
+                @endif--}}
                 
             </div>  
             @else
-            <div>※ログインすると見れます</div>
+                <div><h4>※ログインすると見れます</h4></div>
             @endif
         
         </div>

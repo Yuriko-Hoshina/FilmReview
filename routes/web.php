@@ -79,6 +79,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('movie/edit', 'Admin\MovieController@edit');
     Route::post('movie/edit', 'Admin\MovieController@update');
     Route::get('movie/delete', 'Admin\MovieController@delete');
+    Route::get('movie/get', 'Admin\MovieController@showGetMovies');
+    Route::get('movie/getpage', 'Admin\MovieController@getMovies');
     
     Route::get('user', 'Admin\UserController@info');
     Route::get('user/delete', 'Admin\UserController@delete');
@@ -104,10 +106,14 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function() {
     
     Route::post('comments', 'User\CommentController@create');
     Route::get('comment', 'User\CommentController@add');
+    
     Route::post('/', 'User\CommentController@scoreCreate');
     
     
     Route::get('recommend', 'User\RecommendController@info');
+    
+    Route::get('/', 'User\RecommendController@store');
+    Route::get('recommend/destroy', 'User\RecommendController@destroy');
 });
 
 

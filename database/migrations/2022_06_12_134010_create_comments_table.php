@@ -13,12 +13,12 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('movie_id')->nullable();
             $table->text('body');
-            $table->text('title');
             $table->timestamps();
         });
     }

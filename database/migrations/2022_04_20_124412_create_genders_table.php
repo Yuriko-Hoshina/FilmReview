@@ -13,6 +13,7 @@ class CreateGendersTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('genders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');

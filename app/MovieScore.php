@@ -10,6 +10,8 @@ use App\Score;
 class MovieScore extends Model
 {
     //
+    protected $guarded = array('id');
+    
     public function movie()
     {
         return $this->belongsTo('App\Movie');
@@ -22,6 +24,6 @@ class MovieScore extends Model
     
     public function score()
     {
-        return $this->hasOne('App\Score');
+        return $this->belongsTo('App\Score');
     }
 }
